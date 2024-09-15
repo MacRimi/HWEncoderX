@@ -115,7 +115,7 @@ Este contenedor está diseñado específicamente para aprovechar la aceleración
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://ko-fi.com/G2G313ECAN" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
-    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 100px; margin-right: 10px;"/>
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 100px; margin-right:50px;"/>
     <span>Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
   </a>
 </div>
