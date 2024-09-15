@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  hwencoderx:
+    image: hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - /ruta/a/input:/input
+      - /ruta/a/output:/output
+    environment:
+      - HW_DEVICE=/dev/dri/renderD128
+    tty: true
