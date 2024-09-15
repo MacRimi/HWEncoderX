@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   hwencoderx:
-    image: hwencoderx:latest
+    image: macrimi/hwencoderx:latest
     container_name: hwencoderx
     restart: unless-stopped
     devices:
