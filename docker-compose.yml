@@ -7,5 +7,5 @@ services:
     devices:
       - /dev/dri:/dev/dri
     volumes:
-      - /ruta/a/input:/input
-      - /ruta/a/output:/output
+      - /path/to/input:/input
+      - /path/to/output:/output
