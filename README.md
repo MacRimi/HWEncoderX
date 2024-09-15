@@ -55,6 +55,8 @@ services:
 - `-v /path/to/input:/input:` Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located.
 - `-v /path/to/output:/output:` Replace `/path/to/output` with the path where the transcoded files will be saved.
 
+**Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the _HEVC suffix, and if the folders have the same name, they will also have the _HEVC suffix to avoid conflicts.
+
 ### Additional Notes:
 
 This container is specifically designed to take advantage of VAAPI hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function.**
@@ -113,7 +115,6 @@ services:
 - `--device /dev/dri:/dev/dri`: Esto es necesario para habilitar la aceleración por hardware VAAPI.
 - `-v /path/to/input:/input`: Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar.
 - `-v /path/to/output:/output`: Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados.
-
 
 **Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC, y si las carpetas tienen el mismo nombre, también se agregarán con el sufijo _HEVC para evitar conflictos.
 
