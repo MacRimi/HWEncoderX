@@ -55,7 +55,7 @@ services:
 | :----: | --- |
 | `--device /dev/dri:/dev/dri:` | This is required to enable VAAPI hardware acceleration. |
 | `-v /path/to/input:/input:` | Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located. |
-| `-v /path/to/output:/output:` | Replace /path/to/output with the path where the transcoded files will be saved. (It can be the same as the input folder) |
+| `-v /path/to/output:/output:` | Replace `/path/to/output` with the path where the transcoded files will be saved. (It can be the same as the input folder) |
 
 **Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the _HEVC suffix, and if the folders have the same name, they will also have the _HEVC suffix to avoid conflicts.
 
