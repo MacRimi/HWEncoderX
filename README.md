@@ -114,7 +114,7 @@ services:
 
 #### Parámetros:
 
-| Parametro | Funcion |
+| Parámetros | Función |
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware VAAPI. |
 | `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
