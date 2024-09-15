@@ -11,7 +11,7 @@
 
 The use of H.265 (HEVC) allows for significantly higher compression without noticeable quality loss, resulting in smaller files that are better optimized for storage or streaming. With this Docker container, you can automate the conversion of your files without the need for complex configurations. Just mount the input and output folders, and the container will handle the entire process.
 
-### Características:
+### Characteristics:
 - **File Size Reduction:** Drastically reduces video file sizes without sacrificing quality.
 - **Hardware Acceleration (VAAPI):** Transcoding is handled by the GPU through VAAPI support.
 - **Ideal for Media Servers:** Perfect for those managing large video libraries or media servers such as Plex, Jellyfin, or Emby.
