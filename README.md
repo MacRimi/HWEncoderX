@@ -59,7 +59,7 @@ services:
 
 ### Additional Notes:
 
-This container is specifically designed to take advantage of VAAPI hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function.**
+This container is specifically designed to take advantage of VAAPI hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function.** The container does not delete the original files after transcoding.
 
 
 #
