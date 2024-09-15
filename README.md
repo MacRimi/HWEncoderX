@@ -114,7 +114,7 @@ Este contenedor está diseñado específicamente para aprovechar la aceleración
 #
 
 <div style="justify-content: align-items: center;">
-    <img src="https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png" alt="Support me on Ko-fi" style="width: 150px; margin-right: 10px;"/>
+    <img src="https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png" alt="Support me on Ko-fi" style="width: 150px; margin-right: 10px; center; "/>
     <span>Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
   </a>
 </div>
