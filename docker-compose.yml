@@ -9,6 +9,3 @@ services:
     volumes:
       - /ruta/a/input:/input
       - /ruta/a/output:/output
-    environment:
-      - HW_DEVICE=/dev/dri/renderD128
-    tty: true
