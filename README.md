@@ -1,5 +1,8 @@
 ![HWEncoderX Logo](https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/logo.png)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/macrimi/hwencoderx.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/macrimi/hwencoderx)
+
+
 ## HWEncoderX: Hardware-Accelerated Transcoder (VAAPI)
 
 **This Docker container offers an efficient and simple solution for automatic video file transcoding from H.264 to H.265 using hardware acceleration (VAAPI).** It is ideal for reducing video file sizes without compromising quality and preserving compatibility with all audio, subtitles, and chapters present in the original file.
