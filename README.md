@@ -120,3 +120,8 @@ Este contenedor está diseñado específicamente para aprovechar la aceleración
   </a>
 </div>
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G313ECAN)
+
+Si este proyecto te ha sido útil, considera invitarme a un café en Ko-fi. ¡Gracias por tu apoyo!
+
+
