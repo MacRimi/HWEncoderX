@@ -113,10 +113,11 @@ services:
 Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
 #
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://ko-fi.com/G2G313ECAN" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
-    <img src="https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png" alt="Support me on Ko-fi" style="width: 200px; margin-right: 20px;"/>
-    <span style="font-size: 16px;">Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
+<div style="text-align: center;">
+  <a href="https://ko-fi.com/G2G313ECAN" target="_blank" style="display: inline-flex; align-items: center; text-decoration: none;">
+    <img src="https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png" alt="Support me on Ko-fi" style="width: 200px; margin-right: 15px;"/>
+    <span style="font-size: 16px; vertical-align: middle;">Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
   </a>
 </div>
+
 
