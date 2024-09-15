@@ -114,13 +114,13 @@ Este contenedor está diseñado específicamente para aprovechar la aceleración
 #
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://ko-fi.com/G2G313ECAN" style="display: flex; align-items: center; text-decoration: none;" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png" alt="Support me on Ko-fi" style="width: 150px; margin-right: 10px;"/>
-    <span style="color: black; text-decoration: none;">Si este proyecto te ha sido útil, puedes invitarme a un café en Ko-fi ¡Gracias!</span>
+  <a href="https://ko-fi.com/G2G313ECAN" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 100px; margin-right: 10px;"/>
+    <span>Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
   </a>
 </div>
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G313ECAN)
+
 
 Si este proyecto te ha sido útil, considera invitarme a un café en Ko-fi. ¡Gracias por tu apoyo!
 
