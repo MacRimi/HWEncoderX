@@ -113,3 +113,9 @@ services:
 Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
 #
 [![ko-fi](https://raw.githubusercontent.com/MacRimi/HWEncoderX/main/images/kofi.png)](https://ko-fi.com/G2G313ECAN)
+
+<div style="display: flex; align-items: center;">
+  <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="width: 50px; margin-right: 10px;"/>
+  <span>Si este proyecto te ha sido útil, ¡invítame a un café en Ko-fi! Tu apoyo es muy apreciado.</span>
+</div>
+
