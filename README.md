@@ -113,6 +113,7 @@ services:
 - `--device /dev/dri:/dev/dri`: Esto es necesario para habilitar la aceleración por hardware VAAPI.
 - `-v /path/to/input:/input`: Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar.
 - `-v /path/to/output:/output`: Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados.
+**Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC, y si las carpetas tienen el mismo nombre, también se agregarán con el sufijo _HEVC para evitar conflictos.
 
 ### Notas adicionales:
 Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
