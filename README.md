@@ -128,6 +128,16 @@ services:
 ### Notas adicionales:
 Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
 El contenedor no borra los archivos originales después de la transcodificación.
+
+### Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo `LICENSE`.
+
+### Terceros
+
+Este contenedor utiliza FFmpeg, que está licenciado bajo la LGPL (Lesser General Public License) versión 2.1 o posterior. Para obtener más información sobre la licencia de FFmpeg y el acceso a su código fuente, consulta la [documentación de FFmpeg](https://ffmpeg.org/legal.html).
+
+
 #
 
 <div style="display: flex; justify-content: center; align-items: center;">
