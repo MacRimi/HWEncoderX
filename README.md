@@ -65,6 +65,13 @@ services:
 
 This container is specifically designed to take advantage of VAAPI hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function.** The container does not delete the original files after transcoding.
 
+### License
+
+This project is licensed under the MIT License. For more details, see the `LICENSE` file.
+
+### Third-Party Software
+
+This container uses FFmpeg, which is licensed under the LGPL (Lesser General Public License) version 2.1 or later. For more information about FFmpeg’s license and access to its source code, please refer to the [FFmpeg Legal Documentation](https://ffmpeg.org/legal.html).
 
 #
 
