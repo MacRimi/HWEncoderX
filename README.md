@@ -3,6 +3,8 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/macrimi/hwencoderx.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/macrimi/hwencoderx)
 [![Docker Stars](https://img.shields.io/docker/stars/macrimi/hwencoderx.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/macrimi/hwencoderx)
 [![Docker Image Size](https://img.shields.io/docker/image-size/macrimi/hwencoderx/latest?style=for-the-badge&color=94398d&labelColor=555555&logoColor=ffffff&logo=docker)](https://hub.docker.com/r/macrimi/hwencoderx)
+[![Buy me a coffee](https://img.shields.io/badge/☕-Buy%20me%20a%20coffee-94398d?style=for-the-badge)](https://ko-fi.com/G2G313ECAN)
+
 
 
 ## HWEncoderX: Hardware-Accelerated Transcoder (VAAPI)
