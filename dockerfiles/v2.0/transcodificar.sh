@@ -3,18 +3,35 @@
 # Variables
 INPUT_DIR="${INPUT_DIR:-/input}/"
 OUTPUT_DIR="/output"
-HW_DEVICE="/dev/dri/renderD128"  # Ajusta esto si tu dispositivo de VAAPI es diferente
+HW_DEVICE_VAAPI="/dev/dri/renderD128"
 LOG_FILE="$OUTPUT_DIR/transcoding_log.txt"
+USE_NVIDIA=false
+
+# Detectar si hay una GPU NVIDIA disponible
+if nvidia-smi > /dev/null 2>&1; then
+  USE_NVIDIA=true
+  echo "GPU NVIDIA detectada, se usará NVIDIA NVENC para la transcodificación." >> "$LOG_FILE"
+else
+  echo "No se detectó una GPU NVIDIA. Se usará VAAPI para la transcodificación." >> "$LOG_FILE"
+fi
 
 # Función para transcodificar archivos
 transcode_file() {
   local input_file="$1"
   local output_file="$2"
 
-  # Comando FFmpeg para transcodificar usando VAAPI sin afectar la calidad del video original
-  ffmpeg -hwaccel vaapi -hwaccel_device "$HW_DEVICE" -hwaccel_output_format vaapi \
-    -i "$input_file" -map 0:v:0 -map 0:a -map 0:s -map 0:d? -c:v hevc_vaapi -c:a copy -c:s copy -c:d copy \
-    "$output_file"
+  # Incluir en el log el tipo de transcodificación que se va a utilizar
+  if [ "$USE_NVIDIA" = true ]; then
+    echo "Iniciando transcodificación con NVIDIA NVENC para: $input_file" >> "$LOG_FILE"
+    # Comando FFmpeg para transcodificar usando NVIDIA NVENC
+    ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i "$input_file" -map 0:v:0 -map 0:a -map 0:s -map 0:d? \
+      -c:v hevc_nvenc -c:a copy -c:s copy -c:d copy "$output_file"
+  else
+    echo "Iniciando transcodificación con VAAPI para: $input_file" >> "$LOG_FILE"
+    # Comando FFmpeg para transcodificar usando VAAPI
+    ffmpeg -hwaccel vaapi -hwaccel_device "$HW_DEVICE_VAAPI" -hwaccel_output_format vaapi -i "$input_file" \
+      -map 0:v:0 -map 0:a -map 0:s -map 0:d? -c:v hevc_vaapi -c:a copy -c:s copy -c:d copy "$output_file"
+  fi
 
   # Verificar si la transcodificación fue exitosa
   if [ $? -eq 0 ]; then
