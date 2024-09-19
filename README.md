@@ -53,7 +53,7 @@ services:
 #
 ### - NVIDIA.
 
-#### ocker run:
+#### docker run:
 
 ```bash
 docker run -d --name hwencoderx --gpus all \
