@@ -33,7 +33,7 @@ transcode_file() {
       -map 0:v:0 -map 0:a -map 0:s -map 0:d? -c:v hevc_vaapi -c:a copy -c:s copy -c:d copy "$output_file"
   fi
 
-  # Verificar si la transcodificación fue exitosa
+  # Verificar la transcodificación
   if [ $? -eq 0 ]; then
     echo "Transcodificación completada para: $input_file" >> "$LOG_FILE"
   else
@@ -46,7 +46,6 @@ is_hevc() {
   local file="$1"
   codec=$(ffmpeg -i "$file" 2>&1 | grep Video | grep -oP '(?<=Video: )[^,]+')
 
-  # Normalizamos el valor de codec a minúsculas para evitar errores de coincidencia
   codec=$(echo "$codec" | tr '[:upper:]' '[:lower:]')
 
   if [[ "$codec" == *"hevc"* ]]; then
@@ -56,7 +55,7 @@ is_hevc() {
   fi
 }
 
-# Función para procesar archivos y preservar estructura de directorios
+# Función para procesar archivos y conserver estructura de carpetas
 process_directory() {
   local current_dir="$1"
   local relative_path="${current_dir#$INPUT_DIR}"
