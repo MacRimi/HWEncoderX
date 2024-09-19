@@ -1,11 +1,10 @@
 FROM ubuntu:24.04
 
 # Dependencias necesarias
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     vainfo \
     intel-media-va-driver-non-free \
-    inotify-tools \
     nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
