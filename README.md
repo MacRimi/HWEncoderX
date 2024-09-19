@@ -34,7 +34,7 @@ docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
 ```
-#### Docker Compose
+#### Docker Compose: `docker-compose.yml`
 
 ```yaml
 version: '3.3'
