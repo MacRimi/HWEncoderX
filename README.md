@@ -207,7 +207,7 @@ services:
 Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
 El contenedor no borra los archivos originales después de la transcodificación.
 
-- Compatibilidad con Synology/XPenology NAS:
+**Compatibilidad con Synology/XPenology NAS:**
 Este contenedor es compatible con cualquier dispositivo Synology/XPenology NAS que tenga una GPU Intel o NVIDIA funcional para aprovechar la aceleración por hardware.
 
 ### Licencia
