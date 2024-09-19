@@ -151,7 +151,7 @@ services:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]   # Necesario para habilitar GPUs en Docker Compose
+            - capabilities: [gpu] 
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
@@ -163,6 +163,7 @@ services:
 | Parámetros | Función |
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware VAAPI. |
+| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA.. |
 | `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
 | `-v /path/to/output:/output` | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (puede ser la misma carpeta de entrada) |
 
