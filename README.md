@@ -111,21 +111,21 @@ This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [F
 #
 
 -- Español
+
 ## HWEncoderX: Transcodificador de video con Aceleración por Hardware GPU (VAAPI y NVENC)
 
-HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 (HEVC) automáticamente usando tu GPU con aceleración por hardware, ya sea VAAPI (Intel/AMD) o NVENC (NVIDIA). Mantiene todos los audios, subtítulos y capítulos intactos, mientras reduce el tamaño de tus videos sin perder calidad.
+HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 (HEVC) automáticamente usando tu GPU con aceleración por hardware, ya sea **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Mantiene todos los audios, subtítulos y capítulos intactos, mientras reduce el tamaño de tus videos sin perder calidad.
 
 ### Características:
 
 - **Reducción de tamaño:** H.265 (HEVC) reduce el tamaño del archivo hasta un 70%.
 - **Transcodificación rápida:** Aceleración por hardware con VAAPI y NVENC.
-- **Ideal para servidores multimedia:** Perfecto para Plex, Jellyfin, Emby y otros.
+- **Ideal para servidores multimedia:** Perfecto para **Plex**, **Jellyfin**, **Emby** y otros.
 - **Sencillo:** Solo monta las carpetas de entrada y salida, ¡y listo! HWEncoderX hace todo el trabajo.
 
 ### Requisitos:
 
-Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin una GPU compatible, el contenedor **no funcionará.**
-
+Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin una GPU compatible, el contenedor **no funcionará**.
 
 ### Instrucciones de uso:
 #
@@ -134,7 +134,7 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin
 
 #### Docker run:
 
-```
+```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
@@ -161,12 +161,11 @@ services:
 
 #### Docker run:
 
-```
+```bash
 docker run -d --name hwencoderx --gpus all \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
-
 ```
 
 #### Docker Compose
@@ -194,10 +193,9 @@ services:
 | Parámetros | Función |
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware VAAPI. |
-| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA.. |
+| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA. |
 | `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
 | `-v /path/to/output:/output` | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (puede ser la misma carpeta de entrada) |
-
 
 **Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC, y si las carpetas tienen el mismo nombre, también se agregarán con el sufijo _HEVC para evitar conflictos.
 
@@ -208,15 +206,13 @@ HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una
 Funciona en cualquier NAS con una GPU **Intel** o **NVIDIA** funcional.
 
 #### Modelos DVA:
-En los NAS **DVA** de Synology que usan la **NVIDIA Runtime Library** para **Surveillance Station**, no es posible ejecutar este contenedo ya que no tienen NVIDIA Container Toolkit.
+En los NAS **DVA** de Synology que usan la **NVIDIA Runtime Library** para **Surveillance Station**, no es posible ejecutar este contenedor ya que no tienen NVIDIA Container Toolkit.
 
 ### Licencia
 Este proyecto está bajo la Licencia **MIT**. Consulta el archivo `LICENSE` para más detalles.
 
 ### Software de terceros
 Este contenedor usa **FFmpeg**, licenciado bajo **LGPL 2.1 o posterior**. Consulta la [documentación de FFmpeg](https://ffmpeg.org/legal.html) para más información.
-
-
 
 #
 
