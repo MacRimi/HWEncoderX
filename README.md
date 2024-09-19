@@ -97,6 +97,7 @@ Este contenedor **requiere** una tarjeta gráfica compatible con **VAAPI o NVENC
 
 
 ### Instrucciones de uso:
+#
 
 ### - VAAPI.
 
@@ -156,6 +157,7 @@ services:
       - /volume1/docker/HWEncoderX/output:/output
 ```
 
+#
 #### Parámetros:
 
 | Parámetros | Función |
