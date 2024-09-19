@@ -97,16 +97,24 @@ services:
 **Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the _HEVC suffix, and if the folders have the same name, they will also have the _HEVC suffix to avoid conflicts.
 
 ### Additional Notes:
+This container is specifically designed to leverage **VAAPI** hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function**.  
+The container does not delete the original files after transcoding.
 
-This container is specifically designed to take advantage of VAAPI hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function.** The container does not delete the original files after transcoding.
+**Compatibility with Synology/XPenology NAS:**
+
+This container is compatible with any **Synology/XPenology NAS** device that has a functional **Intel** or **NVIDIA** GPU to take advantage of hardware acceleration.
+
+**DVA Models:**
+
+In **Synology DVA models** that use the **NVIDIA Runtime Library** for image processing through **Surveillance Station**, it is not possible to run this container due to conflicts with the GPU being used for other specialized tasks.
 
 ### License
 
-This project is licensed under the MIT License. For more details, see the `LICENSE` file.
+This project is licensed under the **MIT License**. For more details, see the `LICENSE` file.
 
 ### Third-Party Software
 
-This container uses FFmpeg, which is licensed under the LGPL (Lesser General Public License) version 2.1 or later. For more information about FFmpeg’s license and access to its source code, please refer to the [FFmpeg Legal Documentation](https://ffmpeg.org/legal.html).
+This container uses **FFmpeg**, which is licensed under the **LGPL (Lesser General Public License)** version 2.1 or later. For more information about FFmpeg's license and access to its source code, see the [FFmpeg documentation](https://ffmpeg.org/legal.html).
 
 #
 
