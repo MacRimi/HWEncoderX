@@ -98,7 +98,8 @@ Este contenedor **requiere** una tarjeta gráfica compatible con **VAAPI o NVENC
 
 ### Instrucciones de uso:
 
-### - VAAPI
+### - VAAPI.
+
 #### Docker run:
 
 ```
@@ -123,8 +124,9 @@ services:
       - /path/to/output:/output
 ```
 
+### - NVIDIA.
 
-#### Ejemplo comando docker run para NVIDIA:
+#### Docker run:
 
 ```
 docker run -d --name hwencoderx --gpus all \
@@ -134,9 +136,7 @@ docker run -d --name hwencoderx --gpus all \
 
 ```
 
-#### Uso con Docker Compose
-
-Si prefieres usar Docker Compose, aquí tienes un archivo `docker-compose.yml` de ejemplo:
+#### Docker Compose
 
 ```yaml
 version: '3.3'
@@ -145,11 +145,14 @@ services:
     image: macrimi/hwencoderx:latest
     container_name: hwencoderx
     restart: unless-stopped
-    devices:
-      - /dev/dri:/dev/dri
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]   # Necesario para habilitar GPUs en Docker Compose
     volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
+      - /volume1/docker/HWEncoderX/input:/input
+      - /volume1/docker/HWEncoderX/output:/output
 ```
 
 #### Parámetros:
