@@ -53,7 +53,7 @@ services:
 #
 ### - NVIDIA.
 
-#### Docker run:
+#### ocker run:
 
 ```bash
 docker run -d --name hwencoderx --gpus all \
@@ -62,7 +62,7 @@ docker run -d --name hwencoderx --gpus all \
   macrimi/hwencoderx:latest
 ```
 
-#### Docker Compose
+#### `docker-compose.yml`:
 
 ```yaml
 version: '3.3'
@@ -132,7 +132,7 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin
 
 ### - VAAPI.
 
-#### Docker run:
+#### docker run:
 
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
@@ -140,7 +140,7 @@ docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
 ```
-#### Docker Compose
+#### `docker-compose.yml`:
 
 ```yaml
 version: '3.3'
@@ -159,7 +159,7 @@ services:
 #
 ### - NVIDIA.
 
-#### Docker run:
+#### docker run:
 
 ```bash
 docker run -d --name hwencoderx --gpus all \
@@ -168,7 +168,7 @@ docker run -d --name hwencoderx --gpus all \
   macrimi/hwencoderx:latest
 ```
 
-#### Docker Compose
+#### `docker-compose.yml`:
 
 ```yaml
 version: '3.3'
