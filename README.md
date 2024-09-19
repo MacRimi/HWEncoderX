@@ -98,7 +98,7 @@ Este contenedor **requiere** una tarjeta gráfica compatible con **VAAPI o NVENC
 
 ### Instrucciones de uso:
 
-## - VAAPI.
+### - VAAPI.
 
 #### Docker run:
 
@@ -124,7 +124,8 @@ services:
       - /path/to/output:/output
 ```
 
-## - NVIDIA.
+#
+### - NVIDIA.
 
 #### Docker run:
 
