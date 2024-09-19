@@ -96,7 +96,7 @@ El uso del códec H.265 (HEVC) permite una compresión aproximada del 70% sin p�
 Este contenedor **requiere** una tarjeta gráfica compatible con **VAAPI o NVENC** para funcionar. Si tu sistema no tiene una GPU con soporte para VAAPI o NVENC, el contenedor no podrá realizar la transcodificación.
 
 
-### Instrucciones de uso:
+## Instrucciones de uso:
 
 ### - VAAPI.
 
