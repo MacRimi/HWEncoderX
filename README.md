@@ -97,7 +97,7 @@ services:
 **Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the _HEVC suffix, and if the folders have the same name, they will also have the _HEVC suffix to avoid conflicts.
 
 ### Additional Notes:
-This container is specifically designed to leverage **VAAPI** hardware acceleration. If the system running the container does not have a compatible GPU, **the container will not function**.  
+This container is specifically designed to leverage **VAAPI** and **NVENC** hardware acceleration. If the system running the container does not have a compatible **Intel**, **AMD**, or **NVIDIA** GPU, **the container will not function**.  
 The container does not delete the original files after transcoding.
 
 **Compatibility with Synology/XPenology NAS:**
@@ -212,8 +212,9 @@ services:
 **Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC, y si las carpetas tienen el mismo nombre, también se agregarán con el sufijo _HEVC para evitar conflictos.
 
 ### Notas adicionales:
-Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware VAAPI. Si el sistema en el que estás corriendo el contenedor no tiene una GPU compatible, **el contenedor no funcionará.**
+Este contenedor está diseñado específicamente para aprovechar la aceleración por hardware **VAAPI** y **NVENC**. Si el sistema en el que estás ejecutando el contenedor no tiene una GPU compatible **Intel**, **AMD** o **NVIDIA**, **el contenedor no funcionará**.  
 El contenedor no borra los archivos originales después de la transcodificación.
+
 
 **Compatibilidad con Synology/XPenology NAS:**
 
