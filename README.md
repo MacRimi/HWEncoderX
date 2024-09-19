@@ -210,6 +210,7 @@ El contenedor no borra los archivos originales después de la transcodificación
 **Compatibilidad con Synology/XPenology NAS:**
 
 Este contenedor es compatible con cualquier dispositivo Synology/XPenology NAS que tenga una GPU Intel o NVIDIA funcional para aprovechar la aceleración por hardware.
+
 **Nota sobre modelos DVA:**
 
 En los modelos DVA de Synology que utilizan la NVIDIA Runtime Library para el procesamiento de imágenes mediante Surveillance Station, no es posible ejecutar este contenedor debido a conflictos con el uso de la GPU para otras tareas especializadas.
