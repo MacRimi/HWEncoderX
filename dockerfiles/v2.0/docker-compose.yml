@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    # deploy:     # Para usar NVENC (NVIDIA), descomenta las siguientes líneas:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu] 
+    # Para usar VAAPI (Intel/AMD), deja la siguiente línea activada:
+    devices:
+      - /dev/dri:/dev/dri   # Comenta esta línea si vas a usar NVENC
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
