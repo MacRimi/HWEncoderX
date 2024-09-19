@@ -78,20 +78,23 @@ This container uses FFmpeg, which is licensed under the LGPL (Lesser General Pub
 #
 
 -- Español
-## HWEncoderX: Transcodificador con Aceleración por Hardware (VAAPI)
+## HWEncoderX: Transcodificador de video con Aceleración por Hardware GPU (VAAPI y NVENC)
 
-**Este contenedor Docker ofrece una solución eficiente y sencilla para la transcodificación automática de archivos de video en formato H.264 a H.265 utilizando aceleración por hardware (VAAPI).** Ideal para reducir el tamaño de los videos sin comprometer la calidad y preservando la compatibilidad de todos los audios, subtítulos y capítulos presentes en el archivo original.
+Este contenedor Docker ofrece una solución potente y sencilla para la transcodificación automática de archivos de video a H.265 (HEVC) utilizando aceleración por hardware de GPU, tanto **VAAPI** (Intel) como **NVENC** (NVIDIA), manteniendo la calidad original de los audios, subtítulos y capítulos presentes en el archivo original.
 
-El uso de H.265 (HEVC) permite una compresión significativamente mayor sin pérdida apreciable de calidad, lo que resulta en archivos más pequeños y mejor optimizados para el almacenamiento o la transmisión. Con este contenedor Docker, puedes automatizar la conversión de tus archivos sin necesidad de configuraciones complejas. Solo monta las carpetas de entrada y salida, y el contenedor se encargará de todo el proceso.
+El uso del códec H.265 (HEVC) permite una compresión aproximada del 70% sin pérdida apreciable de calidad. Este contenedor Docker está diseñado para automatizar la conversión de tus archivos sin necesidad de configuraciones complejas. Solo monta las carpetas de entrada y salida, y el contenedor se encargará de todo el proceso.
 
 ### Características:
+
 - **Reducción de tamaño:** Reduce drásticamente el tamaño de los archivos de video sin sacrificar calidad.
-- **Aceleración por hardware (VAAPI):** La transcodificación por GPU se realiza gracias al soporte de VAAPI.
-- **Ideal para servidores multimedia:** Es perfecto para aquellos que gestionan grandes bibliotecas de video o servidores multimedia como Plex, Jellyfin o Emby.
+- **Aceleración por hardware (VAAPI y NVENC):** La transcodificación por GPU se realiza gracias al soporte tanto de VAAPI (Intel) como de NVENC (NVIDIA), mejorando la velocidad de conversión.
+- **Ideal para servidores multimedia:** Perfecto para quienes gestionan grandes bibliotecas de video o servidores multimedia como Plex, Jellyfin o Emby.
 - **Simplicidad:** Solo necesitas configurar las rutas de entrada y salida; el contenedor gestionará la conversión automáticamente.
 
 ### Requisitos:
-Este contenedor **requiere** una tarjeta gráfica compatible con VAAPI para funcionar. Si tu sistema no tiene una GPU con soporte para VAAPI, el contenedor no podrá realizar la transcodificación.
+
+Este contenedor **requiere** una tarjeta gráfica compatible con **VAAPI o NVENC** para funcionar. Si tu sistema no tiene una GPU con soporte para VAAPI o NVENC, el contenedor no podrá realizar la transcodificación.
+
 
 ### Instrucciones de uso:
 
