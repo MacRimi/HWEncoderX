@@ -25,19 +25,19 @@ This container **requires** a graphics card compatible with **VAAPI or NVENC** t
 
 
 ### Usage Instructions:
+#
 
-#### docker run:
+### - VAAPI.
 
-```bash
+#### Docker run:
+
+```
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
 ```
-
-#### Using Docker Compose
-
-If you prefer to use Docker Compose, here’s an example `docker-compose.yml` file:
+#### Docker Compose
 
 ```yaml
 version: '3.3'
@@ -53,11 +53,44 @@ services:
       - /path/to/output:/output
 ```
 
+#
+### - NVIDIA.
+
+#### Docker run:
+
+```
+docker run -d --name hwencoderx --gpus all \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  macrimi/hwencoderx:latest
+
+```
+
+#### Docker Compose
+
+```yaml
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu] 
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
+```
+
 #### Parameters:
 
 | Parameter | Function |
 | :----: | --- |
 | `--device /dev/dri:/dev/dri:` | This is required to enable VAAPI hardware acceleration. |
+| `--gpus all:` | Necessary to enable NVENC hardware acceleration on NVIDIA GPUs.. |
 | `-v /path/to/input:/input:` | Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located. |
 | `-v /path/to/output:/output:` | Replace `/path/to/output` with the path where the transcoded files will be saved. (It can be the same as the input folder) |
 
