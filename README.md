@@ -132,8 +132,8 @@ services:
 
 ```
 docker run -d --name hwencoderx --gpus all \
-  -v /volume1/docker/HWEncoderX/input:/input \
-  -v /volume1/docker/HWEncoderX/output:/output \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
   macrimi/hwencoderx:latest
 
 ```
@@ -153,8 +153,8 @@ services:
           devices:
             - capabilities: [gpu]   # Necesario para habilitar GPUs en Docker Compose
     volumes:
-      - /volume1/docker/HWEncoderX/input:/input
-      - /volume1/docker/HWEncoderX/output:/output
+      - /path/to/input:/input
+      - /path/to/output:/output
 ```
 
 #
