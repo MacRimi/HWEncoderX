@@ -7,20 +7,23 @@
 
 
 
-## HWEncoderX: Hardware-Accelerated Transcoder (VAAPI)
+## HWEncoderX: Hardware-Accelerated Video Transcoder (VAAPI and NVENC)
 
-**This Docker container offers an efficient and simple solution for automatic video file transcoding from H.264 to H.265 using hardware acceleration (VAAPI).** It is ideal for reducing video file sizes without compromising quality and preserving compatibility with all audio, subtitles, and chapters present in the original file.
+This Docker container provides a powerful yet simple solution for automatic video transcoding to H.265 (HEVC) using GPU hardware acceleration, supporting both **VAAPI** (Intel) and **NVENC** (NVIDIA), while preserving the original quality of all audio tracks, subtitles, and chapters present in the source file.
 
-The use of H.265 (HEVC) allows for significantly higher compression without noticeable quality loss, resulting in smaller files that are better optimized for storage or streaming. With this Docker container, you can automate the conversion of your files without the need for complex configurations. Just mount the input and output folders, and the container will handle the entire process.
+Using the H.265 (HEVC) codec allows for approximately 70% compression without noticeable quality loss. This Docker container is designed to automate file conversion without requiring complex configurations. Simply mount the input and output folders, and the container will handle the entire process.
 
-### Characteristics:
-- **File Size Reduction:** Drastically reduces video file sizes without sacrificing quality.
-- **Hardware Acceleration (VAAPI):** Transcoding is handled by the GPU through VAAPI support.
-- **Ideal for Media Servers:** Perfect for those managing large video libraries or media servers such as Plex, Jellyfin, or Emby.
-- **Simplicity:** You only need to set the input and output paths; the container will automatically manage the conversion process.
+### Features:
+
+- **File Size Reduction:** Drastically reduces video file sizes without compromising quality.
+- **Hardware Acceleration (VAAPI and NVENC):** GPU-based transcoding is powered by both VAAPI (Intel) and NVENC (NVIDIA), improving conversion speed.
+- **Ideal for Media Servers:** Perfect for users managing large video libraries or media servers like Plex, Jellyfin, or Emby.
+- **Simplicity:** You only need to configure the input and output paths; the container will automatically manage the conversion process.
 
 ### Requirements:
-This container **requires** a VAAPI-compatible graphics card to function. If your system does not have a GPU with VAAPI support, the container will not be able to perform the transcoding.
+
+This container **requires** a graphics card compatible with **VAAPI or NVENC** to function. If your system does not have a GPU with VAAPI or NVENC support, the container will not be able to perform the transcoding.
+
 
 ### Usage Instructions:
 
