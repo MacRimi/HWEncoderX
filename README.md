@@ -158,7 +158,7 @@ services:
       - /path/to/output:/output
 ```
 
-### - NVIDIA.
+#### - NVIDIA.
 
 #### docker run:
 
@@ -225,7 +225,7 @@ services:
       - /path/to/output:/output
 ```
 
-### - NVIDIA.
+#### - NVIDIA.
 
 #### docker run:
 
