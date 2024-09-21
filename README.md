@@ -194,9 +194,9 @@ services:
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware VAAPI. |
 | `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA. |
-| `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`.). |
-| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA. |
-| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA. |
+| `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
+| `-e QP=22` | (**Solo para VAAPI**) Valor para ajustar manualmente la calidad de los archivos transcodificados. Si no se especifica, se ajusta automáticamente en función de la tasa de bits original. |
+| `-e CQ=22` | (**Solo para NVIDIA NVENC**) Valor para ajustar manualmente la calidad de los archivos transcodificados. Si no se especifica, se ajusta automáticamente en función de la tasa de bits original. |
 | `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
 | `-v /path/to/output:/output` | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (puede ser la misma carpeta de entrada) |
 
