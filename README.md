@@ -16,7 +16,7 @@ HWEncoderX is a Docker container that allows you to automatically transcode vide
 - **Fast transcoding:** Hardware acceleration with VAAPI and NVENC.
 - **Ideal for media servers:** Perfect for **Plex**, **Jellyfin**, **Emby**, and more.
 - **Simple:** Just mount the input and output folders, and you're set! HWEncoderX does all the work.
-- **Automatic quality adjustments:** Detects the original bitrate and adjusts the quality automatically. If no values are specified, the script automatically adjusts CQ or QP to 18 or 23 depending on the input video bitrate: 18 for high bitrate videos and 23 for lower bitrate ones.
+- **Automatic quality adjustments:** Detects the original bitrate and adjusts the quality automatically. If no values are specified, the script automatically adjusts `CQ` or `QP` to 18 or 23 depending on the input video bitrate: 18 for high bitrate videos and 23 for lower bitrate ones.
 - **Customizable options:** Manually define transcoding quality using `CQ` (for NVENC) and `QP` (for VAAPI) and select the **preset** to adjust the speed and quality to your needs. [Learn more about presets here](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset).
 
 ### Requirements:
