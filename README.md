@@ -158,7 +158,6 @@ services:
       - /path/to/output:/output
 ```
 
-#
 ### - NVIDIA.
 
 #### docker run:
@@ -184,6 +183,78 @@ services:
         reservations:
           devices:
             - capabilities: [gpu] 
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
+```
+
+#
+
+#### - Opción manual:
+
+Esta opción permite ajustar manualmente la calidad de transcodificación usando variables de entorno para valores como CQ (para NVIDIA NVENC) y QP (para VAAPI) y preset.
+
+##### - VAAPI.
+
+#### docker run:
+```bash
+docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  -e QP=22 \
+  -e PRESET=fast \
+  macrimi/hwencoderx:latest
+```
+
+#### `docker-compose.yml`:
+
+```yaml
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - QP=22
+      - PRESET=fast
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
+```
+
+### - NVIDIA.
+
+#### docker run:
+
+```bash
+docker run -d --name hwencoderx --gpus all \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  -e CQ=18 \
+  -e PRESET=slow \
+  macrimi/hwencoderx:latest
+```
+
+#### `docker-compose.yml`:
+
+```yaml
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu] 
+    environment:
+      - CQ=18
+      - PRESET=slow
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
