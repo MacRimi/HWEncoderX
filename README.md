@@ -6,34 +6,38 @@
 
 
 
-## HWEncoderX: Video Transcoding with Hardware Acceleration (VAAPI and NVENC)
+## HWEncoderX: Video Transcoder with GPU Hardware Acceleration (VAAPI and NVENC)
 
-HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, whether it's **VAAPI** (Intel/AMD) or **NVENC** (NVIDIA). It keeps all audio, subtitles, and chapters intact, while reducing the size of your videos without sacrificing quality.
+HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, either **VAAPI** (Intel/AMD) or **NVENC** (NVIDIA). It keeps all audio, subtitles, and chapters intact while reducing the size of your videos without quality loss.
 
 ### Features:
 
 - **Size reduction:** H.265 (HEVC) reduces file size by up to 70%.
 - **Fast transcoding:** Hardware acceleration with VAAPI and NVENC.
-- **Perfect for media servers:** Ideal for **Plex**, **Jellyfin**, **Emby**, and others.
-- **Easy to use:** Just mount the input and output folders, and HWEncoderX does all the work.
+- **Ideal for media servers:** Perfect for **Plex**, **Jellyfin**, **Emby**, and more.
+- **Simple:** Just mount the input and output folders, and you're set! HWEncoderX does all the work.
+- **Automatic quality adjustments:** Detects the original bitrate and adjusts the quality automatically. If no values are specified, the script automatically adjusts CQ or QP to 18 or 23 depending on the input video bitrate: 18 for high bitrate videos and 23 for lower bitrate ones.
+- **Customizable options:** Manually define transcoding quality using `CQ` (for NVENC) and `QP` (for VAAPI) and select the **preset** to adjust the speed and quality to your needs. [Learn more about presets here](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset).
 
 ### Requirements:
 
 You need a GPU compatible with **VAAPI** (Intel/AMD) or **NVENC** (NVIDIA). Without a compatible GPU, the container **will not work**.
 
-### Usage Instructions:
-#
+### Usage instructions:
 
-### - VAAPI.
+#### - Automatic option:
+The container automatically adjusts the output quality based on the input file's bitrate.
+
+##### - VAAPI.
 
 #### docker run:
-
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
 ```
+
 #### `docker-compose.yml`:
 
 ```yaml
@@ -50,8 +54,7 @@ services:
       - /path/to/output:/output
 ```
 
-#
-### - NVIDIA.
+#### - NVIDIA.
 
 #### docker run:
 
@@ -82,31 +85,108 @@ services:
 ```
 
 #
+
+#### - Manual option:
+
+This option allows you to manually adjust the transcoding quality using environment variables for settings like CQ (for NVIDIA NVENC) and QP (for VAAPI) and preset.
+
+##### - VAAPI.
+
+#### docker run:
+```bash
+docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  -e QP=22 \
+  -e PRESET=fast \
+  macrimi/hwencoderx:latest
+```
+
+#### `docker-compose.yml`:
+
+```yaml
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - QP=22
+      - PRESET=fast
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
+```
+
+#### - NVIDIA.
+
+#### docker run:
+
+```bash
+docker run -d --name hwencoderx --gpus all \
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  -e CQ=18 \
+  -e PRESET=slow \
+  macrimi/hwencoderx:latest
+```
+
+#### `docker-compose.yml`:
+
+```yaml
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu] 
+    environment:
+      - CQ=18
+      - PRESET=slow
+    volumes:
+      - /path/to/input:/input
+      - /path/to/output:/output
+```
+
+#
+
 #### Parameters:
 
 | Parameters | Function |
 | :----: | --- |
-| `--device /dev/dri` | Required to enable VAAPI hardware acceleration. |
-| `--gpus all` | Required to enable NVENC hardware acceleration on NVIDIA GPUs. |
+| `--device /dev/dri` | Required to enable hardware acceleration via VAAPI. |
+| `--gpus all` | Required to enable hardware acceleration via NVENC on NVIDIA GPUs. |
+| `-e PRESET=fast` | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). |
+| `-e QP=22` (VAAPI) | Manually define the quality for VAAPI. |
+| `-e CQ=22` (NVENC) | Manually define the quality for NVIDIA NVENC. |
 | `-v /path/to/input:/input` | Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located. |
-| `-v /path/to/output:/output` | Replace `/path/to/output` with the path where the transcoded files will be saved. (Can be the same as the input folder.) |
+| `-v /path/to/output:/output` | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
 
-**Note:** `/path/to/input` and `/path/to/output` can be the same folder. The transcoded files are created with the _HEVC suffix, and if the folders have the same name, they will also be added with the _HEVC suffix to avoid conflicts.
+**Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the _HEVC suffix.
 
 ### Additional Notes:
-HWEncoderX works with hardware acceleration for **VAAPI** and **NVENC**. Without a compatible **Intel**, **AMD**, or **NVIDIA** GPU, the container will not function. The original files are not deleted after transcoding.
+HWEncoderX works with hardware acceleration **VAAPI** and **NVENC**. Without a compatible **Intel**, **AMD**, or **NVIDIA** GPU, the container will not work. The original files are not deleted after transcoding.
 
-#### Compatibility with Synology/XPenology NAS:
+#### Synology/XPenology NAS Compatibility:
 It works on any NAS with a functional **Intel** or **NVIDIA** GPU.
 
 #### DVA Models:
-On **DVA NAS models** from Synology that use the **NVIDIA Runtime Library** for **Surveillance Station**, it is not possible to run this container because they do not have NVIDIA Container Toolkit.
+On **DVA** Synology NAS that use the **NVIDIA Runtime Library** for **Surveillance Station**, this container cannot be run as it lacks NVIDIA Container Toolkit support.
 
 ### License
 This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
 
-### Third-Party Software
+### Third-party software
 This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [FFmpeg documentation](https://ffmpeg.org/legal.html) for more information.
+
 
 #
 
