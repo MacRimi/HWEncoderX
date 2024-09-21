@@ -128,18 +128,18 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin una GPU compatible, el contenedor **no funcionará**.
 
 ### Instrucciones de uso:
-#
 
-### - VAAPI.
+#### - Opción automática:
+Esta opción es ideal para usuarios que desean que el contenedor ajuste automáticamente la calidad de salida basándose en la tasa de bits del archivo de entrada.
 
-#### docker run:
+##### - VAAPI.
 
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
-```
+
 #### `docker-compose.yml`:
 
 ```yaml
@@ -200,7 +200,7 @@ services:
 | `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
 | `-v /path/to/output:/output` | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (puede ser la misma carpeta de entrada) |
 
-**Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC, y si las carpetas tienen el mismo nombre, también se agregarán con el sufijo _HEVC para evitar conflictos.
+**Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC.
 
 ### Notas adicionales:
 HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una GPU compatible **Intel**, **AMD**, o **NVIDIA**, el contenedor no funcionará. Los archivos originales no se borran después de la transcodificación.
