@@ -202,7 +202,7 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 - **Transcodificación rápida:** Aceleración por hardware con VAAPI y NVENC.
 - **Ideal para servidores multimedia:** Perfecto para **Plex**, **Jellyfin**, **Emby** y otros.
 - **Sencillo:** Solo monta las carpetas de entrada y salida, ¡y listo! HWEncoderX hace todo el trabajo.
-- **Ajustes automáticos:** Detecta la tasa de bits original y ajusta la calidad automáticamente. Si no se especifican valores, el script ajusta automáticamente CQ o QP a 18 o 23, según el bitrate del video de entrada: 18 para videos con bitrate alto y 23 para videos con bitrate más bajo.
+- **Ajustes automáticos:** Detecta la tasa de bits original y ajusta la calidad automáticamente. Si no se especifican valores, el script ajusta automáticamente `CQv o `QP` a 18 o 23, según el bitrate del video de entrada: 18 para videos con bitrate alto y 23 para videos con bitrate más bajo.
 - **Opciones personalizadas:** Define manualmente la calidad de transcodificación usando `CQ` (para NVENC) y `QP` (para VAAPI) y selecciona el **preset** para adaptar la velocidad y la calidad a tus necesidades. [Aquí puedes aprender más sobre ellos](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset).
 
 
