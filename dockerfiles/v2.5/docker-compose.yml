@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:2.5
+    container_name: hwencoderx
+    restart: unless-stopped
+    environment:
+      - PRESET=medium  # Ajusta el preset de calidad (opcional)
+      - CQ=22          # Parámetro para NVIDIA NVENC (opcional)
+      - QP=20          # Parámetro para VAAPI (opcional)
+    devices:
+      - /dev/dri:/dev/dri  # Para VAAPI
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]  # Para NVIDIA NVENC
+    volumes:
+      - /path/to/input:/input  # Ruta a la carpeta de entrada
+      - /path/to/output:/output  # Ruta a la carpeta de salida
