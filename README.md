@@ -130,15 +130,17 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin
 ### Instrucciones de uso:
 
 #### - Opción automática:
-Esta opción es ideal para usuarios que desean que el contenedor ajuste automáticamente la calidad de salida basándose en la tasa de bits del archivo de entrada.
+El contenedor ajusta automáticamente la calidad de salida basándose en la tasa de bits del archivo de entrada.
 
 ##### - VAAPI.
 
+#### docker run:
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   macrimi/hwencoderx:latest
+```
 
 #### `docker-compose.yml`:
 
