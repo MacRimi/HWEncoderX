@@ -6,37 +6,29 @@
 
 
 
-# HWEncoderX Video Transcoder with GPU Hardware Acceleration (VAAPI, NVENC, and QSV)
+# HWEncoderX: Video Transcoder with GPU Hardware Acceleration (VAAPI, NVENC, and QSV)
 
-HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It keeps all audio, subtitles, and chapters intact while reducing the size of your videos without quality loss.
+HWEncoderX is a Docker container that automatically transcodes videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It retains all audio, subtitles, and chapters while reducing the file size without quality loss.
 
 ## Features
 
-- **Support for Multiple GPU Types**: Now includes support for **Intel Quick Sync (QSV)** along with **NVIDIA NVENC** and **VAAPI**.
-  - If no compatible GPU is detected, the container will stop, and an error notification will be sent.
+- **Support for Multiple GPUs**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
 
-- **Notifications to Telegram**:
-  - Telegram notifications are now available, including a welcome message upon the first launch of the bot.
-  - Notifications include details for completed transcodifications (time, speed, quality) and error messages if issues arise during transcoding or hardware detection.
+- **Telegram Notifications**: Sends welcome messages, transcoding details (time, speed, quality), and error notifications.
 
-- **Automatic Quality Adjustment**:
-  - Improved quality adjustment that determines multiple values based on the input video bitrate, instead of just high or low quality.
-  - The quality level during transcoding is defined by a new global **QUALITY** variable, providing greater control.
+- **Automatic Quality Adjustment**: Optimized quality adjustment based on the input video bitrate using the global **QUALITY** variable.
 
-- **Always Active Docker**:
-  - The Docker container now remains active indefinitely, constantly monitoring the input directory for new files to transcode.
+- **Always Active Docker**: The container remains active, continuously monitoring the input directory for new files.
 
-- **Error Handling and Space Verification**:
-  - Checks available disk space before starting transcoding, sending notifications if there is insufficient space or hardware errors.
+- **Error Handling and Space Verification**: Checks disk space before transcoding and sends notifications if space is insufficient or errors occur.
 
-- **Improved Transcoding Process**:
-  - Fixed an issue that prevented some files from being transcoded if they lacked a defined subtitle track.
+- **Transcoding Improvements**: Fixed an issue that prevented transcoding of files without defined subtitle tracks.
 
-- **Size Reduction**: H.265 (HEVC) reduces file size by up to 70%.
+- **Size Reduction**: Transcoding to H.265 (HEVC) reduces file size by up to 70%.
 - **Fast Transcoding**: Hardware acceleration with **VAAPI**, **NVENC**, and **QSV**.
-- **Ideal for Media Servers**: Perfect for **Plex**, **Jellyfin**, **Emby**, and more.
-- **Simple**: Just mount the input and output folders, and you're set! HWEncoderX does all the work.
-- **Customizable Options**: Manually define transcoding quality using the **QUALITY** variable (e.g., `CQ` for NVENC, `QP` for VAAPI/QSV) and select the **preset** to adjust the speed and quality as needed.
+- **Ideal for Media Servers**: Compatible with **Plex**, **Jellyfin**, **Emby**, and more.
+- **Simple**: Just mount the input and output folders, and HWEncoderX does all the work.
+- **Customizable Options**: Manually define quality using the **QUALITY** variable and select the **preset** to adjust speed and quality as needed.
 
 ## Requirements
 
