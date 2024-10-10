@@ -199,41 +199,58 @@ This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [F
 
 -- Español
 
-## HWEncoderX: Transcodificador de video con Aceleración por Hardware GPU (VAAPI y NVENC)
+# HWEncoderX v3.0: Transcodificador de Video con Aceleración por Hardware GPU (VAAPI, NVENC y QSV)
 
-HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 (HEVC) automáticamente usando tu GPU con aceleración por hardware, ya sea **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Mantiene todos los audios, subtítulos y capítulos intactos, mientras reduce el tamaño de tus videos sin perder calidad.
+HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 (HEVC) automáticamente usando tu GPU con aceleración por hardware, soportando **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) y **Intel Quick Sync (QSV)**. Mantiene todos los audios, subtítulos y capítulos intactos, mientras reduce el tamaño de tus videos sin perder calidad.
 
-### Características:
+## Características
 
-- **Reducción de tamaño:** H.265 (HEVC) reduce el tamaño del archivo hasta un 70%.
-- **Transcodificación rápida:** Aceleración por hardware con VAAPI y NVENC.
-- **Ideal para servidores multimedia:** Perfecto para **Plex**, **Jellyfin**, **Emby** y otros.
-- **Sencillo:** Solo monta las carpetas de entrada y salida, ¡y listo! HWEncoderX hace todo el trabajo.
-- **Ajustes automáticos:** Detecta la tasa de bits original y ajusta la calidad automáticamente. Si no se especifican valores, el script ajusta automáticamente `CQ` o `QP` a 18 o 23, según el bitrate del video de entrada: 18 para videos con bitrate alto y 23 para videos con bitrate más bajo.
-- **Opciones personalizadas:** Define manualmente la calidad de transcodificación usando `CQ` (para NVENC) y `QP` (para VAAPI) y selecciona el **preset** para adaptar la velocidad y la calidad a tus necesidades. [Aquí puedes aprender más sobre ellos](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset).
+- **Soporte para Múltiples Tipos de GPU**: Ahora incluye soporte para **Intel Quick Sync (QSV)** junto con **NVIDIA NVENC** y **VAAPI**.
+  - Si no se detecta una GPU compatible, el contenedor se detendrá y se enviará una notificación de error.
 
+- **Notificaciones a Telegram**:
+  - Ahora están disponibles las notificaciones a Telegram, incluyendo un mensaje de bienvenida al lanzar el bot por primera vez.
+  - Las notificaciones incluyen detalles de las transcodificaciones completadas (tiempo, velocidad, calidad) y mensajes de error si surgen problemas durante la transcodificación o la detección del hardware.
 
-### Requisitos:
+- **Ajuste Automático de Calidad**:
+  - Mejora en el ajuste de calidad que determina múltiples valores basados en el bitrate del video de entrada, en lugar de solo alta o baja calidad.
+  - El nivel de calidad durante la transcodificación se define mediante una nueva variable global **QUALITY**, brindando mayor control.
 
-Necesitas una GPU compatible con **VAAPI** (Intel/AMD) o **NVENC** (NVIDIA). Sin una GPU compatible, el contenedor **no funcionará**.
+- **Docker Siempre Activo**:
+  - El contenedor Docker ahora permanece activo indefinidamente, monitoreando constantemente el directorio de entrada para detectar nuevos archivos para transcodificar.
 
-### Instrucciones de uso:
+- **Manejo de Errores y Verificación de Espacio**:
+  - Verifica el espacio disponible en disco antes de iniciar la transcodificación, enviando notificaciones si hay espacio insuficiente o errores de hardware.
 
-#### - Opción automática:
-El contenedor ajusta automáticamente la calidad de salida basándose en la tasa de bits del archivo de entrada.
+- **Mejora del Proceso de Transcodificación**:
+  - Se solucionó un problema que impedía la transcodificación de algunos archivos si carecían de una pista de subtítulos definida.
 
-##### - VAAPI.
+- **Reducción de Tamaño**: H.265 (HEVC) reduce el tamaño del archivo hasta en un 70%.
+- **Transcodificación Rápida**: Aceleración por hardware con **VAAPI**, **NVENC** y **QSV**.
+- **Ideal para Servidores Multimedia**: Perfecto para **Plex**, **Jellyfin**, **Emby** y más.
+- **Sencillo**: Solo monta las carpetas de entrada y salida, ¡y listo! HWEncoderX hace todo el trabajo.
+- **Opciones Personalizables**: Define manualmente la calidad de transcodificación usando la variable **QUALITY** (por ejemplo, `CQ` para NVENC, `QP` para VAAPI/QSV) y selecciona el **preset** para ajustar la velocidad y la calidad según tus necesidades.
 
-#### docker run:
+## Requisitos
+
+Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **Intel Quick Sync (QSV)**. Sin una GPU compatible, el contenedor **no funcionará**.
+
+## Instrucciones de Uso
+
+### - Opción Automática:
+El contenedor ajusta automáticamente la calidad de salida en función del bitrate del archivo de entrada.
+
+#### - VAAPI
+
+##### docker run:
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
+  -v /ruta/a/entrada:/input \
+  -v /ruta/a/salida:/output \
   macrimi/hwencoderx:latest
 ```
 
-#### `docker-compose.yml`:
-
+##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
 services:
@@ -244,23 +261,21 @@ services:
     devices:
       - /dev/dri:/dev/dri
     volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
+      - /ruta/a/entrada:/input
+      - /ruta/a/salida:/output
 ```
 
-#### - NVIDIA.
+#### - NVIDIA
 
-#### docker run:
-
+##### docker run:
 ```bash
 docker run -d --name hwencoderx --gpus all \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
+  -v /ruta/a/entrada:/input \
+  -v /ruta/a/salida:/output \
   macrimi/hwencoderx:latest
 ```
 
-#### `docker-compose.yml`:
-
+##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
 services:
@@ -274,30 +289,26 @@ services:
           devices:
             - capabilities: [gpu] 
     volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
+      - /ruta/a/entrada:/input
+      - /ruta/a/salida:/output
 ```
 
-#
+### - Opción Manual:
+Esta opción te permite ajustar manualmente la calidad de transcodificación utilizando variables de entorno como **QUALITY**, **CQ** (para NVIDIA NVENC) y **QP** (para VAAPI y QSV).
 
-#### - Opción manual:
+#### - VAAPI
 
-Esta opción permite ajustar manualmente la calidad de transcodificación usando variables de entorno para valores como CQ (para NVIDIA NVENC) y QP (para VAAPI) y preset.
-
-##### - VAAPI.
-
-#### docker run:
+##### docker run:
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
-  -e QP=22 \
+  -v /ruta/a/entrada:/input \
+  -v /ruta/a/salida:/output \
+  -e QUALITY=18 \
   -e PRESET=fast \
   macrimi/hwencoderx:latest
 ```
 
-#### `docker-compose.yml`:
-
+##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
 services:
@@ -308,28 +319,26 @@ services:
     devices:
       - /dev/dri:/dev/dri
     environment:
-      - QP=22
+      - QUALITY=18
       - PRESET=fast
     volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
+      - /ruta/a/entrada:/input
+      - /ruta/a/salida:/output
 ```
 
-#### - NVIDIA.
+#### - NVIDIA
 
-#### docker run:
-
+##### docker run:
 ```bash
 docker run -d --name hwencoderx --gpus all \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
-  -e CQ=18 \
+  -v /ruta/a/entrada:/input \
+  -v /ruta/a/salida:/output \
+  -e QUALITY=18 \
   -e PRESET=slow \
   macrimi/hwencoderx:latest
 ```
 
-#### `docker-compose.yml`:
-
+##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
 services:
@@ -343,28 +352,25 @@ services:
           devices:
             - capabilities: [gpu] 
     environment:
-      - CQ=18
+      - QUALITY=18
       - PRESET=slow
     volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
+      - /ruta/a/entrada:/input
+      - /ruta/a/salida:/output
 ```
 
-#
-
-#### Parámetros:
+## Parámetros
 
 | Parámetros | Función |
 | :----: | --- |
-| `--device /dev/dri` | Necesario para habilitar la aceleración por hardware VAAPI. |
-| `--gpus all` | Necesario para habilitar la aceleración por hardware NVENC en GPU NVIDIA. |
+| `--device /dev/dri` | Necesario para habilitar la aceleración por hardware mediante VAAPI. |
+| `--gpus all` | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
 | `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
-| `-e QP=22` (VAAPI) | Define manualmente la calidad para VAAPI. |
-| `-e CQ=22` (NVENC) | Define manualmente la calidad para NVIDIA NVENC. |
-| `-v /path/to/input:/input` | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde estarán los videos a transcodificar. |
-| `-v /path/to/output:/output` | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (puede ser la misma carpeta de entrada) |
+| `-e QUALITY=22` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-v /ruta/a/entrada:/input` | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
+| `-v /ruta/a/salida:/output` | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
 
-**Nota:** `/path/to/input` y `/path/to/output` pueden ser la misma carpeta. Los archivos transcodificados se crean con el sufijo _HEVC.
+**Nota:** `/ruta/a/entrada` y `/ruta/a/salida` pueden ser la misma carpeta. Los archivos transcodificados se crearán con el sufijo `_HEVC`.
 
 ### Notas adicionales:
 HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una GPU compatible **Intel**, **AMD**, o **NVIDIA**, el contenedor no funcionará. Los archivos originales no se borran después de la transcodificación.
