@@ -316,7 +316,7 @@ docker run -d --name hwencoderx --gpus all \
   -v /ruta/a/entrada:/input \
   -v /ruta/a/salida:/output \
   -e QUALITY=18 \
-  -e PRESET=slow \
+  -e PRESET=medium \
   macrimi/hwencoderx:latest
 ```
 
@@ -335,7 +335,7 @@ services:
             - capabilities: [gpu] 
     environment:
       - QUALITY=18
-      - PRESET=slow
+      - PRESET=medium
     volumes:
       - /ruta/a/entrada:/input
       - /ruta/a/salida:/output
@@ -347,8 +347,8 @@ services:
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware mediante VAAPI. |
 | `--gpus all` | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
-| `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
-| `-e QUALITY=22` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-e PRESET=medium` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
+| `-e QUALITY=18` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
 | `-v /ruta/a/entrada:/input` | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
 | `-v /ruta/a/salida:/output` | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
 
