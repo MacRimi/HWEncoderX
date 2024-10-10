@@ -16,7 +16,7 @@ HWEncoderX is a Docker container that automatically transcodes videos to H.265 (
 
 - **Telegram Notifications**: Sends welcome messages, transcoding details (time, speed, quality), and error notifications.
 
-- **Automatic Quality Adjustment**: Optimized quality adjustment based on the input video bitrate using the global **QUALITY** variable.
+- **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global QUALITY variable.
 
 - **Always Active Docker**: The container remains active, continuously monitoring the input directory for new files.
 
@@ -201,7 +201,7 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 
 - **Notificaciones a Telegram**: Se envían notificaciones de bienvenida, detalles de transcodificación (tiempo, velocidad, calidad) y errores durante el proceso.
 
-- **Ajuste Automático de Calidad**: Ajuste optimizado de calidad según el bitrate del video de entrada usando la variable global **QUALITY**.
+- **Ajuste Automático de Calidad**: Ajuste optimizado para **priorizar la calidad** según el bitrate del video de entrada usando la variable global **QUALITY**.
 
 - **Docker Siempre Activo**: El contenedor permanece activo y monitorea constantemente el directorio de entrada para detectar nuevos archivos.
 
