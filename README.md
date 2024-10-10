@@ -199,37 +199,29 @@ This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [F
 
 -- Español
 
-# HWEncoderX v3.0: Transcodificador de Video con Aceleración por Hardware GPU (VAAPI, NVENC y QSV)
+# HWEncoderX: Transcodificador de Video con Aceleración por Hardware GPU (VAAPI, NVENC y QSV)
 
 HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 (HEVC) automáticamente usando tu GPU con aceleración por hardware, soportando **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) y **Intel Quick Sync (QSV)**. Mantiene todos los audios, subtítulos y capítulos intactos, mientras reduce el tamaño de tus videos sin perder calidad.
 
 ## Características
 
-- **Soporte para Múltiples Tipos de GPU**: Ahora incluye soporte para **Intel Quick Sync (QSV)** junto con **NVIDIA NVENC** y **VAAPI**.
-  - Si no se detecta una GPU compatible, el contenedor se detendrá y se enviará una notificación de error.
+- **Soporte para Múltiples GPU**: Compatible con **Intel Quick Sync (QSV)**, **NVIDIA NVENC** y **VAAPI**. Si no se detecta una GPU compatible, el contenedor se detiene y envía una notificación de error.
 
-- **Notificaciones a Telegram**:
-  - Ahora están disponibles las notificaciones a Telegram, incluyendo un mensaje de bienvenida al lanzar el bot por primera vez.
-  - Las notificaciones incluyen detalles de las transcodificaciones completadas (tiempo, velocidad, calidad) y mensajes de error si surgen problemas durante la transcodificación o la detección del hardware.
+- **Notificaciones a Telegram**: Se envían notificaciones de bienvenida, detalles de transcodificación (tiempo, velocidad, calidad) y errores durante el proceso.
 
-- **Ajuste Automático de Calidad**:
-  - Mejora en el ajuste de calidad que determina múltiples valores basados en el bitrate del video de entrada, en lugar de solo alta o baja calidad.
-  - El nivel de calidad durante la transcodificación se define mediante una nueva variable global **QUALITY**, brindando mayor control.
+- **Ajuste Automático de Calidad**: Ajuste optimizado de calidad según el bitrate del video de entrada usando la variable global **QUALITY**.
 
-- **Docker Siempre Activo**:
-  - El contenedor Docker ahora permanece activo indefinidamente, monitoreando constantemente el directorio de entrada para detectar nuevos archivos para transcodificar.
+- **Docker Siempre Activo**: El contenedor permanece activo y monitorea constantemente el directorio de entrada para detectar nuevos archivos.
 
-- **Manejo de Errores y Verificación de Espacio**:
-  - Verifica el espacio disponible en disco antes de iniciar la transcodificación, enviando notificaciones si hay espacio insuficiente o errores de hardware.
+- **Manejo de Errores y Verificación de Espacio**: Verifica el espacio en disco antes de la transcodificación y envía notificaciones si el espacio es insuficiente o si hay errores.
 
-- **Mejora del Proceso de Transcodificación**:
-  - Se solucionó un problema que impedía la transcodificación de algunos archivos si carecían de una pista de subtítulos definida.
+- **Mejoras en la Transcodificación**: Se corrigió un error que impedía transcodificar archivos sin pistas de subtítulos definidas.
 
-- **Reducción de Tamaño**: H.265 (HEVC) reduce el tamaño del archivo hasta en un 70%.
+- **Reducción de Tamaño**: Transcodificación a H.265 (HEVC) para reducir el tamaño del archivo hasta en un 70%.
 - **Transcodificación Rápida**: Aceleración por hardware con **VAAPI**, **NVENC** y **QSV**.
-- **Ideal para Servidores Multimedia**: Perfecto para **Plex**, **Jellyfin**, **Emby** y más.
-- **Sencillo**: Solo monta las carpetas de entrada y salida, ¡y listo! HWEncoderX hace todo el trabajo.
-- **Opciones Personalizables**: Define manualmente la calidad de transcodificación usando la variable **QUALITY** (por ejemplo, `CQ` para NVENC, `QP` para VAAPI/QSV) y selecciona el **preset** para ajustar la velocidad y la calidad según tus necesidades.
+- **Ideal para Servidores Multimedia**: Compatible con **Plex**, **Jellyfin**, **Emby** y más.
+- **Sencillo**: Solo monta las carpetas de entrada y salida, y HWEncoderX hace todo el trabajo.
+- **Opciones Personalizables**: Define manualmente la calidad con la variable **QUALITY** y selecciona el **preset** para ajustar la velocidad y calidad según tus necesidades.
 
 ## Requisitos
 
