@@ -47,7 +47,7 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 ### - Automatic Option:
 The container automatically adjusts the output quality based on the input file's bitrate.
 
-#### - VAAPI
+#### - Intel Quick Sync and VAAPI
 
 ##### docker run:
 ```bash
@@ -126,8 +126,8 @@ services:
     devices:
       - /dev/dri:/dev/dri
     environment:
-      - QUALITY=18
-      - PRESET=fast
+      - QUALITY=medium
+      - PRESET=medium
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
@@ -141,7 +141,7 @@ docker run -d --name hwencoderx --gpus all \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
   -e QUALITY=18 \
-  -e PRESET=slow \
+  -e PRESET=medium \
   macrimi/hwencoderx:latest
 ```
 
@@ -160,7 +160,7 @@ services:
             - capabilities: [gpu] 
     environment:
       - QUALITY=18
-      - PRESET=slow
+      - PRESET=medium
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
@@ -172,8 +172,8 @@ services:
 | :----: | --- |
 | `--device /dev/dri` | Required to enable hardware acceleration via VAAPI. |
 | `--gpus all` | Required to enable hardware acceleration via NVENC on NVIDIA GPUs. |
-| `-e PRESET=fast` | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). |
-| `-e QUALITY=22` | Manually define the quality level for transcoding, used across NVENC, VAAPI, and QSV. |
+| `-e PRESET=medium` | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). |
+| `-e QUALITY=18` | Manually define the quality level for transcoding, used across NVENC, VAAPI, and QSV. |
 | `-v /path/to/input:/input` | Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located. |
 | `-v /path/to/output:/output` | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
 
