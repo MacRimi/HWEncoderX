@@ -13,24 +13,24 @@ HWEncoderX is a Docker container that allows you to automatically transcode vide
 ## Features
 
 - **Support for Multiple GPU Types**: Now includes support for **Intel Quick Sync (QSV)** along with **NVIDIA NVENC** and **VAAPI**.
-  - If no compatible GPU is detected, the container will stop, and an error notification will be sent.
+- If no compatible GPU is detected, the container will stop, and an error notification will be sent.
 
 - **Notifications to Telegram**:
-  - Telegram notifications are now available, including a welcome message upon the first launch of the bot.
-  - Notifications include details for completed transcodifications (time, speed, quality) and error messages if issues arise during transcoding or hardware detection.
+- Telegram notifications are now available, including a welcome message upon the first launch of the bot.
+- Notifications include details for completed transcodifications (time, speed, quality) and error messages if issues arise during transcoding or hardware detection.
 
 - **Automatic Quality Adjustment**:
-  - Improved quality adjustment that determines multiple values based on the input video bitrate, instead of just high or low quality.
-  - The quality level during transcoding is defined by a new global **QUALITY** variable, providing greater control.
+- Improved quality adjustment that determines multiple values based on the input video bitrate, instead of just high or low quality.
+- The quality level during transcoding is defined by a new global **QUALITY** variable, providing greater control.
 
 - **Always Active Docker**:
-  - The Docker container now remains active indefinitely, constantly monitoring the input directory for new files to transcode.
+- The Docker container now remains active indefinitely, constantly monitoring the input directory for new files to transcode.
 
 - **Error Handling and Space Verification**:
-  - Checks available disk space before starting transcoding, sending notifications if there is insufficient space or hardware errors.
+- Checks available disk space before starting transcoding, sending notifications if there is insufficient space or hardware errors.
 
 - **Improved Transcoding Process**:
-  - Fixed an issue that prevented some files from being transcoded if they lacked a defined subtitle track.
+- Fixed an issue that prevented some files from being transcoded if they lacked a defined subtitle track.
 
 - **Size Reduction**: H.265 (HEVC) reduces file size by up to 70%.
 - **Fast Transcoding**: Hardware acceleration with **VAAPI**, **NVENC**, and **QSV**.
