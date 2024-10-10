@@ -101,7 +101,7 @@ services:
 ```
 
 ### - Manual Option:
-This option allows you to manually adjust the transcoding quality using environment variables like **QUALITY**, **CQ** (for NVIDIA NVENC), and **QP** (for VAAPI and QSV).
+This option allows you to manually adjust the transcoding quality using environment variables like **QUALITY**, (for NVIDIA NVENC), and (for VAAPI and QSV).
 
 #### - VAAPI
 
