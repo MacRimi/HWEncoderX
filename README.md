@@ -223,7 +223,7 @@ Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener
 
 Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **Intel Quick Sync (QSV)**. Sin una GPU compatible, el contenedor **no funcionará**.
 
-## Parámetros
+### Parámetros
 
 | Parámetros | Requisito | Función |
 | :----: | :----: | --- |
