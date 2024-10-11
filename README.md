@@ -78,7 +78,9 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \  # Optional: Set custom transcoding quality-e PRESET=medium \  # Optional: Choose a different preset (default: medium)-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
+  -e QUALITY=18 \  # Optional: Set custom transcoding quality
+  -e PRESET=medium \  # Optional: Choose a different preset (default: medium)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
   -e CHAT_ID=xxxxxxxx \                      # Optional (requires BOT_TOKEN)
   -e NOTIFICATIONS=all \                     # Optional if you want to receive all notifications
   macrimi/hwencoderx:latest
