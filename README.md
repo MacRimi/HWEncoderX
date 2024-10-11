@@ -314,7 +314,7 @@ Este proyecto está bajo la **Licencia MIT**. Puedes usar, modificar y distribui
 ### Software de Terceros
 Este contenedor usa **FFmpeg**, licenciado bajo **LGPL 2.1 o posterior**. Consulta la [documentación de FFmpeg](https://ffmpeg.org/legal.html) para más información.
 
-
+#
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://ko-fi.com/G2G313ECAN" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
