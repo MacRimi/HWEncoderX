@@ -219,8 +219,8 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 
 ```bash
 docker run -d --name hwencoderx --device=/dev/dri \
-  -v /ruta/a/entrada:/input \ 
-  -v /ruta/a/salida:/output \ 
+  -v /path/to/input:/input \ 
+  -v /path/to/output:/output \ 
   -e QUALITY=18 \ # Opcional
   -e PRESET=medium \ # Opcional
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Opcional (requiere CHAT_ID)
@@ -242,8 +242,8 @@ services:
     devices:
       - /dev/dri:/dev/dri 
     volumes:
-      - /ruta/a/entrada:/input 
-      - /ruta/a/salida:/output 
+      - /path/to/input:/input
+      - /path/to/output:/output 
     environment:
       - QUALITY=18 # Opcional
       - PRESET=medium # Opcional
@@ -260,8 +260,8 @@ services:
 
 ```bash
 docker run -d --name hwencoderx --gpus all \ 
-  -v /ruta/a/entrada:/input \ 
-  -v /ruta/a/salida:/output \ 
+  -v /path/to/input:/input \ 
+  -v /path/to/output:/output \ 
   -e QUALITY=18 \ # Opcional
   -e PRESET=medium \ # Opcional
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Opcional (requiere CHAT_ID)
@@ -286,8 +286,8 @@ services:
           devices:
             - capabilities: [gpu]
     volumes:
-      - /ruta/a/entrada:/input 
-      - /ruta/a/salida:/output 
+      - /path/to/input:/input
+      - /path/to/output:/output
     environment:
       - QUALITY=18 # Opcional
       - PRESET=medium # Opcional
