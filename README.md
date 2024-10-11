@@ -29,8 +29,6 @@ HWEncoderX is a Docker container that allows you to automatically transcode vide
 
 ## Telegram Notification Configuration
 
-To verify that the Telegram bot works correctly after configuring **BOT_TOKEN** and **CHAT_ID**, send a test message to confirm that you receive notifications as expected.
-
 To receive notifications via Telegram, you need to configure a bot and obtain your **BOT_TOKEN** and **CHAT_ID**. Follow these steps:
 
 1. Create a new bot on Telegram using [BotFather](https://t.me/botfather) and follow the instructions until you get your **BOT_TOKEN**.
@@ -188,8 +186,6 @@ HWEncoderX es un contenedor Docker diseñado para simplificar la transcodificaci
 - **Opciones Personalizables**: Define manualmente la calidad usando la variable **QUALITY** y selecciona el **preset** para ajustar la velocidad y calidad según sea necesario.
 
 ## Configuración de Notificaciones de Telegram
-
-Para verificar que el bot de Telegram funciona correctamente después de configurar **BOT_TOKEN** y **CHAT_ID**, envía un mensaje de prueba para confirmar que recibes las notificaciones según lo esperado.
 
 Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener tu **BOT_TOKEN** y **CHAT_ID**. Sigue estos pasos:
 
