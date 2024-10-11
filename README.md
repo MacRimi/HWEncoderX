@@ -252,7 +252,7 @@ docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /ruta/a/salida:/output \
   -e QUALITY=18 \                            # Opcional si quieres personalizar la calidad 
   -e PRESET=medium \                         # Opcional si quieres selecioar otro preset
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Opcional, (requiere CHAT_ID)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Opcional (requiere CHAT_ID)
   -e CHAT_ID=xxxxxxxx \                      # Opcional (requiere BOT_TOKEN)
   -e NOTIFICATIONS=all \                     # Opcional si quieres recibir todas las notificaciones
   macrimi/hwencoderx:latest
@@ -277,8 +277,8 @@ services:
       - PRESET=medium                            # Opcional si quieres selecioar otro preset
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
-      CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional (requiere CHAT_ID)
+      CHAT_ID: "xxxxxxxx"                        # Opcional (requiere BOT_TOKEN)
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
@@ -291,8 +291,8 @@ docker run -d --name hwencoderx --gpus all \
   -v /ruta/a/salida:/output \
   -e QUALITY=18 \                              # Opcional si quieres personalizar la calidad 
   -e PRESET=medium \                           # Opcional si quieres selecioar otro preset
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Opcional si quieres recibir notificaciones
-  -e CHAT_ID=xxxxxxxx \                        # Opcional si quieres recibir notificaciones
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Opcional (requiere CHAT_ID)
+  -e CHAT_ID=xxxxxxxx \                        # Opcional (requiere BOT_TOKEN)
   -e NOTIFICATIONS=all \                       # Opcional si quieres recibir todas las notificaciones
   macrimi/hwencoderx:latest
 ```
@@ -319,8 +319,8 @@ services:
      -e PRESET=medium \                          # Opcional si quieres selecioar otro preset
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
-      CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional (requiere CHAT_ID)
+      CHAT_ID: "xxxxxxxx"                        # Opcional (requiere BOT_TOKEN)
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
