@@ -17,7 +17,6 @@ HWEncoderX is a Docker container that allows you to automatically transcode vide
 - **Always Active Docker**: The container remains active, constantly monitoring the input directory for new files.
 - **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global **QUALITY** variable.
 - **Error Handling and Space Verification**: Checks disk space before transcoding and sends notifications if space is insufficient or if there are errors.
-- **Improved Transcoding Process**: Fixed an issue that prevented transcoding files without defined subtitle tracks.
 - **Size Reduction**: Transcodes to H.265 (HEVC) to reduce file size by up to 70%.
 - **Ideal for Media Servers**: Compatible with **Plex**, **Jellyfin**, **Emby**, and more.
 - **Simple**: Just mount the input and output folders, and HWEncoderX does all the work.
@@ -184,7 +183,6 @@ HWEncoderX es un contenedor Docker diseñado para simplificar la transcodificaci
 - **Docker Siempre Activo**: El contenedor permanece activo y supervisa constantemente el directorio de entrada para detectar nuevos archivos.
 - **Ajuste Automático de Calidad**: Ajuste optimizado para **priorizar la calidad** según el bitrate del video de entrada utilizando la variable global **QUALITY**.
 - **Manejo de Errores y Verificación de Espacio**: Verifica el espacio en disco antes de la transcodificación y envía notificaciones si el espacio es insuficiente o si hay errores.
-- **Mejoras en el Proceso de Transcodificación**: Se corrigió un problema que impedía transcodificar archivos sin pistas de subtítulos definidas.
 - **Reducción de Tamaño**: Transcodifica a H.265 (HEVC) para reducir el tamaño del archivo hasta en un 70%.
 - **Ideal para Servidores Multimedia**: Compatible con **Plex**, **Jellyfin**, **Emby** y más.
 - **Sencillo**: Solo monta las carpetas de entrada y salida, y HWEncoderX hace todo el trabajo.
