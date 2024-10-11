@@ -8,91 +8,56 @@
 
 # HWEncoderX: Video Transcoder with GPU Hardware Acceleration (VAAPI, NVENC, and QSV)
 
-HWEncoderX is a Docker container that automatically transcodes videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It retains all audio, subtitles, and chapters while reducing the file size without quality loss.
+HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It keeps all audio, subtitles, and chapters intact while reducing the size of your videos without quality loss.
 
 ## Features
 
 - **Support for Multiple GPUs**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
-
-- **Telegram Notifications**: Sends welcome messages, transcoding details (time, speed, quality), and error notifications.
-
-- **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global QUALITY variable.
-
-- **Always Active Docker**: The container remains active, continuously monitoring the input directory for new files.
-
-- **Error Handling and Space Verification**: Checks disk space before transcoding and sends notifications if space is insufficient or errors occur.
-
-- **Transcoding Improvements**: Fixed an issue that prevented transcoding of files without defined subtitle tracks.
-
-- **Size Reduction**: Transcoding to H.265 (HEVC) reduces file size by up to 70%.
+- **Support for Multiple Input Formats**: Compatible with `.mkv`, `.mp4`, `.avi`, `.mov`, and `.mpeg` files.
+- **Telegram Notifications**: Sends welcome notifications, transcoding details (time, speed, quality), and errors during the process.
+- **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global **QUALITY** variable.
+- **Always Active Docker**: The container remains active, constantly monitoring the input directory for new files.
+- **Error Handling and Space Verification**: Checks disk space before transcoding and sends notifications if space is insufficient or if there are errors.
+- **Transcoding Improvements**: Fixed an issue that prevented transcoding files without defined subtitle tracks.
+- **Size Reduction**: Transcodes to H.265 (HEVC) to reduce file size by up to 70%.
 - **Ideal for Media Servers**: Compatible with **Plex**, **Jellyfin**, **Emby**, and more.
 - **Simple**: Just mount the input and output folders, and HWEncoderX does all the work.
-- **Customizable Options**: Manually define quality using the **QUALITY** variable and select the **preset** to adjust speed and quality as needed.
+- **Customizable Options**: Manually define the quality using the **QUALITY** variable and select the **preset** to adjust speed and quality as needed.
+
+## Telegram Notification Configuration
+
+To receive notifications via Telegram, you need to configure a bot and obtain your **BOT_TOKEN** and **CHAT_ID**. Follow these steps:
+
+1. Create a new bot on Telegram using [BotFather](https://t.me/botfather) and follow the instructions until you get your **BOT_TOKEN**.
+2. Get your **CHAT_ID** by sending a message to your bot and using an API call like:
+   ```bash
+   https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates
+   ```
+   Replace `<YOUR_BOT_TOKEN>` with your bot token to find your **CHAT_ID** in the response.
 
 ## Requirements
 
 You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **Intel Quick Sync (QSV)**. Without a compatible GPU, the container **will not work**.
 
-## Usage Instructions
+### Parameters
 
-### - Automatic Option:
-The container automatically adjusts the output quality based on the input file's bitrate.
+| Parameters | Requirement | Function |
+| :----: | :----: | --- |
+| `--device /dev/dri` | Required if using QSV or VAAPI | Needed to enable hardware acceleration through Intel Quick Sync (QSV) and VAAPI. |
+| `--gpus all` | Required if using NVENC | Needed to enable hardware acceleration through NVENC on NVIDIA GPUs. |
+| `-v /path/to/input:/input` | Required | Replace `/path/to/input` with the path to your input folder where the videos to be transcoded are located. |
+| `-v /path/to/output:/output` | Required | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
+| `-e PRESET=fast` | Optional | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). `medium` is the default value. |
+| `-e QUALITY=17` | Optional | Manually define the quality level for transcoding, used in NVENC, VAAPI, and QSV. If not defined, quality will be adjusted automatically. |
+| `-e BOT_TOKEN` | Optional if notifications are desired | The token of your Telegram bot for sending notifications. |
+| `-e CHAT_ID` | Optional if notifications are desired | The chat ID where Telegram notifications will be sent. |
+| `-e NOTIFICATIONS` | Optional | Set to `all` to receive all notifications; if not defined, only error notifications will be sent. |
 
-#### - Intel Quick Sync and VAAPI
+**Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the `_HEVC` suffix.
 
-##### docker run:
-```bash
-docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
-  macrimi/hwencoderx:latest
-```
+#
 
-##### `docker-compose.yml`:
-```yaml
-version: '3.3'
-services:
-  hwencoderx:
-    image: macrimi/hwencoderx:latest
-    container_name: hwencoderx
-    restart: unless-stopped
-    devices:
-      - /dev/dri:/dev/dri
-    volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
-```
-
-#### - NVIDIA
-
-##### docker run:
-```bash
-docker run -d --name hwencoderx --gpus all \
-  -v /path/to/input:/input \
-  -v /path/to/output:/output \
-  macrimi/hwencoderx:latest
-```
-
-##### `docker-compose.yml`:
-```yaml
-version: '3.3'
-services:
-  hwencoderx:
-    image: macrimi/hwencoderx:latest
-    container_name: hwencoderx
-    restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu] 
-    volumes:
-      - /path/to/input:/input
-      - /path/to/output:/output
-```
-
-### - Manual Option:
-This option allows you to manually adjust the transcoding quality using the global variable QUALITY, which applies to NVENC, VAAPI, and QSV.
+### Usage Instructions:
 
 #### - VAAPI
 
@@ -101,14 +66,18 @@ This option allows you to manually adjust the transcoding quality using the glob
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \
-  -e PRESET=fast \
+  -e QUALITY=18 \                            # Optional if you want to customize the quality 
+  -e PRESET=medium \                         # Optional if you want to select a different preset
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
+  -e CHAT_ID=xxxxxxxx \                      # Optional (requires BOT_TOKEN)
+  -e NOTIFICATIONS=all \                     # Optional if you want to receive all notifications
   macrimi/hwencoderx:latest
 ```
 
 ##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
+
 services:
   hwencoderx:
     image: macrimi/hwencoderx:latest
@@ -116,12 +85,17 @@ services:
     restart: unless-stopped
     devices:
       - /dev/dri:/dev/dri
-    environment:
-      - QUALITY=medium
-      - PRESET=medium
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
+    environment:
+      - QUALITY=18                               # Optional if you want to customize the quality   
+      - PRESET=medium                            # Optional if you want to select a different preset
+      # Optional variables for notifications
+      # Define these variables only if you want to receive notifications (values should be quoted)
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Optional (requires CHAT_ID)
+      CHAT_ID: "xxxxxxxx"                        # Optional (requires BOT_TOKEN)
+      NOTIFICATIONS: "all"                       # Optional if you want to receive all notifications
 ```
 
 #### - NVIDIA
@@ -131,14 +105,18 @@ services:
 docker run -d --name hwencoderx --gpus all \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \
-  -e PRESET=medium \
+  -e QUALITY=18 \                              # Optional if you want to customize the quality 
+  -e PRESET=medium \                           # Optional if you want to select a different preset
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Optional (requires CHAT_ID)
+  -e CHAT_ID=xxxxxxxx \                        # Optional (requires BOT_TOKEN)
+  -e NOTIFICATIONS=all \                       # Optional if you want to receive all notifications
   macrimi/hwencoderx:latest
 ```
 
 ##### `docker-compose.yml`:
 ```yaml
 version: '3.3'
+
 services:
   hwencoderx:
     image: macrimi/hwencoderx:latest
@@ -149,38 +127,32 @@ services:
         reservations:
           devices:
             - capabilities: [gpu] 
-    environment:
-      - QUALITY=18
-      - PRESET=medium
     volumes:
       - /path/to/input:/input
       - /path/to/output:/output
+    environment:
+     -e QUALITY=18 \                             # Optional if you want to customize the quality 
+     -e PRESET=medium \                          # Optional if you want to select a different preset
+      # Optional variables for notifications
+      # Define these variables only if you want to receive notifications (values should be quoted)
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Optional (requires CHAT_ID)
+      CHAT_ID: "xxxxxxxx"                        # Optional (requires BOT_TOKEN)
+      NOTIFICATIONS: "all"                       # Optional if you want to receive all notifications
 ```
 
-## Parameters
+#
 
-| Parameters | Function |
-| :----: | --- |
-| `--device /dev/dri` | Required to enable hardware acceleration via VAAPI. |
-| `--gpus all` | Required to enable hardware acceleration via NVENC on NVIDIA GPUs. |
-| `-e PRESET=medium` | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). |
-| `-e QUALITY=18` | Manually define the quality level for transcoding, used across NVENC, VAAPI, and QSV. |
-| `-v /path/to/input:/input` | Replace `/path/to/input` with the path to your input folder, where the videos to be transcoded are located. |
-| `-v /path/to/output:/output` | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
+### Additional Notes:
+HWEncoderX works with hardware acceleration **VAAPI**, **NVENC**, and **QSV**. Without a compatible **Intel**, **AMD**, or **NVIDIA** GPU, the container will not work. Original files are not deleted after transcoding.
 
-**Note:** `/path/to/input` and `/path/to/output` can be the same folder. Transcoded files will be created with the `_HEVC` suffix.
+#### Synology/XPenology NAS Compatibility:
+Works on any NAS with a functional **Intel** or **NVIDIA** GPU.
 
-## Additional Notes
-HWEncoderX works with hardware acceleration **VAAPI**, **NVENC**, and **QSV**. Without a compatible **Intel**, **AMD**, or **NVIDIA** GPU, the container will not work. The original files are not deleted after transcoding.
-
-### Synology/XPenology NAS Compatibility
-It works on any NAS with a functional **Intel** or **NVIDIA** GPU.
-
-### DVA Models
-On **DVA** Synology NAS that use the **NVIDIA Runtime Library** for **Surveillance Station**, this container cannot be run as it lacks NVIDIA Container Toolkit support.
+#### DVA Models:
+On **DVA** Synology NAS that use the **NVIDIA Runtime Library** for **Surveillance Station**, it is not possible to run this container as they do not have NVIDIA Container Toolkit.
 
 ### License
-This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
+This project is under the **MIT License**. See the `LICENSE` file for more details.
 
 ### Third-party Software
 This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [FFmpeg documentation](https://ffmpeg.org/legal.html) for more information.
@@ -327,7 +299,7 @@ services:
 #
 
 ### Notas adicionales:
-HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una GPU compatible **Intel**, **AMD**, o **NVIDIA**, el contenedor no funcionará. Los archivos originales no se borran después de la transcodificación.
+HWEncoderX funciona con aceleración por hardware **VAAPI**, **NVENC** y **QSV**. Sin una GPU compatible **Intel**, **AMD** o **NVIDIA**, el contenedor **no funcionará**. Los archivos originales no se eliminan tras la transcodificación.
 
 #### Compatibilidad con Synology/XPenology NAS:
 Funciona en cualquier NAS con una GPU **Intel** o **NVIDIA** funcional.
