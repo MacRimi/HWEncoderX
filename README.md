@@ -72,11 +72,11 @@ docker run -d --name hwencoderx --device=/dev/dri \
   macrimi/hwencoderx:latest
 
 # Explanation of the parameters used:
-# - `-e QUALITY=18`: (Optional) Defines the custom quality level (recommended between 16 to 22) for transcoding.
-# - `-e PRESET=medium`: (Optional) Defines the custom preset for transcoding (optional).
-# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (Optional, replace with your TOKEN, requires CHAT_ID).
-# - `-e CHAT_ID=xxxxxxxx`: (Optional, replace with your CHAT_ID, requires BOT_TOKEN).
-# - `-e NOTIFICATIONS=all`: (Optional)
+# - `-e QUALITY=18`: Optional. Defines the custom quality level (recommended between 16 to 22) for transcoding.
+# - `-e PRESET=medium`: Optional. Defines the custom preset for transcoding (optional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: Optional. Replace with your TOKEN, requires CHAT_ID.
+# - `-e CHAT_ID=xxxxxxxx`: Optional. Replace with your CHAT_ID, requires BOT_TOKEN.
+# - `-e NOTIFICATIONS=all`: Optional.
 ```
 
 #### `docker-compose.yml`
@@ -99,9 +99,9 @@ services:
       - PRESET=medium # Optional
       # Optional variables for notifications
       # Define these variables only if you want to receive notifications (values should be quoted)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (requires CHAT_ID)
-      CHAT_ID: "xxxxxxxx" # Optional (requires BOT_TOKEN)
-      NOTIFICATIONS: "all" # Optional
+      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
+      - CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
+      - NOTIFICATIONS: "all" # Optional
 ```
 
 ### NVIDIA Usage
@@ -120,11 +120,11 @@ docker run -d --name hwencoderx --gpus all \
   macrimi/hwencoderx:latest
 
 # Explanation of the parameters used:
-# - `-e QUALITY=18`: (Optional) Defines the custom quality level (recommended between 16 to 22) for transcoding.
-# - `-e PRESET=medium`: (Optional) Defines the custom preset for transcoding (optional).
-# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (Optional, replace with your TOKEN, requires CHAT_ID).
-# - `-e CHAT_ID=xxxxxxxx`: (Optional, replace with your CHAT_ID, requires BOT_TOKEN).
-# - `-e NOTIFICATIONS=all`: (Optional).
+# - `-e QUALITY=18`: Optional. Defines the custom quality level (recommended between 16 to 22) for transcoding.
+# - `-e PRESET=medium`: Optional. Defines the custom preset for transcoding.
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: Optional. Replace with your TOKEN, requires CHAT_ID.
+# - `-e CHAT_ID=xxxxxxxx`: Optional. Replace with your CHAT_ID, requires BOT_TOKEN.
+# - `-e NOTIFICATIONS=all`: Optional.
 ```
 
 #### `docker-compose.yml`
@@ -150,9 +150,9 @@ services:
       - PRESET=medium # Optional
       # Optional variables for notifications
       # Define these variables only if you want to receive notifications (values should be quoted)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (requires CHAT_ID)
-      CHAT_ID: "xxxxxxxx" # Optional (requires BOT_TOKEN)
-      NOTIFICATIONS: "all" # Optional
+      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
+      - CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
+      - NOTIFICATIONS: "all" # Optional
 ```
 
 ## Additional Notes
@@ -243,11 +243,11 @@ docker run -d --name hwencoderx --device=/dev/dri \
   macrimi/hwencoderx:latest
 
 # Explicación de los parámetros usados:
-# - `-e QUALITY=18`: (Opcional) Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
-# - `-e PRESET=medium`: (Opcional) Define el preset personalizado de la transcodificación (opcional).
-# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (opcional, cambia por tu TOKEN, requiere CHAT_ID).
-# - `-e CHAT_ID=xxxxxxxx`: (opcional, cambia por tu CHAT_ID, requiere BOT_TOKEN).
-# - `-e NOTIFICATIONS=all`: (opcional).
+# - `-e QUALITY=18`: Opcional. Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
+# - `-e PRESET=medium`: Opcional. Define el preset personalizado de la transcodificación (opcional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: opcional. Cambia por tu TOKEN, requiere CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: Opcional. Cambia por tu CHAT_ID, requiere BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: Opcional.
 ```
 
 #### `docker-compose.yml`
@@ -270,9 +270,9 @@ services:
       - PRESET=medium # Opcional
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (requiere CHAT_ID)
-      CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
-      NOTIFICATIONS: "all" # Opcional
+      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
+      - CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
+      - NOTIFICATIONS: "all" # Opcional
 ```
 
 ### Uso de NVIDIA
@@ -291,11 +291,11 @@ docker run -d --name hwencoderx --gpus all \
   macrimi/hwencoderx:latest
 
 # Explicación de los parámetros usados:
-# - `-e QUALITY=18`: (Opcional) Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
-# - `-e PRESET=medium`: (Opcional) Define el preset personalizado de la transcodificación (opcional).
-# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (opcional, cambia por tu TOKEN, requiere CHAT_ID).
-# - `-e CHAT_ID=xxxxxxxx`: (opcional, cambia por tu CHAT_ID, requiere BOT_TOKEN).
-# - `-e NOTIFICATIONS=all`: (opcional).
+# - `-e QUALITY=18`: Opcional. Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
+# - `-e PRESET=medium`: Opcional. Define el preset personalizado de la transcodificación (opcional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: opcional. Cambia por tu TOKEN, requiere CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: Opcional. Cambia por tu CHAT_ID, requiere BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: Opcional.
 ```
 
 #### `docker-compose.yml`
@@ -321,9 +321,9 @@ services:
       - PRESET=medium # Opcional
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (requiere CHAT_ID)
-      CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
-      NOTIFICATIONS: "all" # Opcional
+      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
+      - CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
+      - NOTIFICATIONS: "all" # Opcional
 ```
 
 ## Notas Adicionales
