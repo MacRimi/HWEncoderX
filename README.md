@@ -64,12 +64,17 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 docker run -d --name hwencoderx --device=/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \ # Optional
-  -e PRESET=medium \ # Optional
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Optional (requires CHAT_ID)
-  -e CHAT_ID=xxxxxxxx \ # Optional (requires BOT_TOKEN)
-  -e NOTIFICATIONS=all \ # Optional
-  macrimi/hwencoderx:latest 
+  # Optional (requires CHAT_ID)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
+  # Optional (requires BOT_TOKEN)
+  -e CHAT_ID=xxxxxxxx \
+  # Optional
+  -e QUALITY=18 \
+  # Optional
+  -e PRESET=medium \
+  # Optional
+  -e NOTIFICATIONS=all \
+  macrimi/hwencoderx:latest
 ```
 
 #### `docker-compose.yml`
@@ -103,13 +108,18 @@ services:
 
 ```bash
 docker run -d --name hwencoderx --gpus all \ 
-  -v /path/to/input:/input \ 
-  -v /path/to/output:/output \ 
-  -e QUALITY=18 \ # Optional
-  -e PRESET=medium \ # Optional
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Optional (requires CHAT_ID)
-  -e CHAT_ID=xxxxxxxx \ # Optional (requires BOT_TOKEN)
-  -e NOTIFICATIONS=all \ # Optional
+  -v /path/to/input:/input \
+  -v /path/to/output:/output \
+  # Optional (requires CHAT_ID)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
+  # Optional (requires BOT_TOKEN)
+  -e CHAT_ID=xxxxxxxx \
+  # Optional
+  -e QUALITY=18 \
+  # Optional
+  -e PRESET=medium \
+  # Optional
+  -e NOTIFICATIONS=all \
   macrimi/hwencoderx:latest 
 ```
 
@@ -220,12 +230,17 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 ```bash
 docker run -d --name hwencoderx --device=/dev/dri \
   -v /path/to/input:/input \ 
-  -v /path/to/output:/output \ 
-  -e QUALITY=18 \ # Opcional
-  -e PRESET=medium \ # Opcional
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Opcional (requiere CHAT_ID)
-  -e CHAT_ID=xxxxxxxx \ # Opcional (requiere BOT_TOKEN)
-  -e NOTIFICATIONS=all \ # Opcional
+  -v /path/to/output:/output \
+  # Opcional
+  -e QUALITY=18 \
+  # Opcional
+  -e PRESET=medium \
+  # Opcional (requiere CHAT_ID)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
+  # Opcional (requiere BOT_TOKEN)
+  -e CHAT_ID=xxxxxxxx \
+  # Opcional
+  -e NOTIFICATIONS=all \
   macrimi/hwencoderx:latest 
 ```
 
@@ -261,13 +276,18 @@ services:
 ```bash
 docker run -d --name hwencoderx --gpus all \ 
   -v /path/to/input:/input \ 
-  -v /path/to/output:/output \ 
-  -e QUALITY=18 \ # Opcional
-  -e PRESET=medium \ # Opcional
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \ # Opcional (requiere CHAT_ID)
-  -e CHAT_ID=xxxxxxxx \ # Opcional (requiere BOT_TOKEN)
-  -e NOTIFICATIONS=all \ # Opcional
-  macrimi/hwencoderx:latest 
+  -v /path/to/output:/output \
+  # Opcional
+  -e QUALITY=18 \
+  # Opcional
+  -e PRESET=medium \
+  # Opcional (requiere CHAT_ID)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
+  # Opcional (requiere BOT_TOKEN)
+  -e CHAT_ID=xxxxxxxx \
+  # Opcional
+  -e NOTIFICATIONS=all \
+  macrimi/hwencoderx:latest
 ```
 
 #### `docker-compose.yml`
