@@ -8,23 +8,33 @@
 
 # HWEncoderX: Video Transcoder with GPU Hardware Acceleration (VAAPI, NVENC, and QSV)
 
+HWEncoderX is a Docker container designed to simplify video transcoding to H.265 (HEVC), leveraging your GPU for efficient hardware acceleration using **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **Intel Quick Sync (QSV)**. This allows you to reduce video size without losing quality while preserving audio, subtitles, and chapters intact.
+
 HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It keeps all audio, subtitles, and chapters intact while reducing the size of your videos without quality loss.
 
 ## Features
 
+- **Multi-GPU Support**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
+- **Multiple Input Format Support**: Compatible with `.mkv`, `.mp4`, `.avi`, `.mov`, and `.mpeg` files.
+
 - **Support for Multiple GPUs**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
 - **Support for Multiple Input Formats**: Compatible with `.mkv`, `.mp4`, `.avi`, `.mov`, and `.mpeg` files.
 - **Telegram Notifications**: Sends welcome notifications, transcoding details (time, speed, quality), and errors during the process.
+- **Always Active Docker**: The container remains active, constantly monitoring the input directory for new files.
+- **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global **QUALITY** variable.
 - **Automatic Quality Adjustment**: Optimized adjustment to **prioritize quality** based on the input video bitrate using the global **QUALITY** variable.
 - **Always Active Docker**: The container remains active, constantly monitoring the input directory for new files.
 - **Error Handling and Space Verification**: Checks disk space before transcoding and sends notifications if space is insufficient or if there are errors.
-- **Transcoding Improvements**: Fixed an issue that prevented transcoding files without defined subtitle tracks.
+- **Improved Transcoding Process**: Fixed an issue that prevented transcoding files without defined subtitle tracks.
+
 - **Size Reduction**: Transcodes to H.265 (HEVC) to reduce file size by up to 70%.
 - **Ideal for Media Servers**: Compatible with **Plex**, **Jellyfin**, **Emby**, and more.
 - **Simple**: Just mount the input and output folders, and HWEncoderX does all the work.
 - **Customizable Options**: Manually define the quality using the **QUALITY** variable and select the **preset** to adjust speed and quality as needed.
 
 ## Telegram Notification Configuration
+
+To verify that the Telegram bot works correctly after configuring **BOT_TOKEN** and **CHAT_ID**, send a test message to confirm that you receive notifications as expected.
 
 To receive notifications via Telegram, you need to configure a bot and obtain your **BOT_TOKEN** and **CHAT_ID**. Follow these steps:
 
@@ -47,8 +57,8 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 | `--gpus all` | Required if using NVENC | Needed to enable hardware acceleration through NVENC on NVIDIA GPUs. |
 | `-v /path/to/input:/input` | Required | Replace `/path/to/input` with the path to your input folder where the videos to be transcoded are located. |
 | `-v /path/to/output:/output` | Required | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
-| `-e PRESET` | Optional | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). `medium` is the default value. |
-| `-e QUALITY` | Optional | Manually define the quality level for transcoding, used in NVENC, VAAPI, and QSV. If not defined, quality will be adjusted automatically. |
+| `-e PRESET=fast` | Optional | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). `medium` is the default value. |
+| `-e QUALITY=17` | Optional | Manually define the quality level for transcoding, used in NVENC, VAAPI, and QSV. If not defined, the quality will be automatically adjusted based on the input bitrate to maintain an optimal balance between quality and file size. |
 | `-e BOT_TOKEN` | Optional if notifications are desired | The token of your Telegram bot for sending notifications. |
 | `-e CHAT_ID` | Optional if notifications are desired | The chat ID where Telegram notifications will be sent. |
 | `-e NOTIFICATIONS` | Optional | Set to `all` to receive all notifications; if not defined, only error notifications will be sent. |
@@ -59,16 +69,16 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 
 ### Usage Instructions:
 
-#### - Intel Quick Sync (QSV), VAAPI
+#### VAAPI Usage
+
+
 
 ##### docker run:
 ```bash
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \                            # Optional if you want to customize the quality 
-  -e PRESET=medium \                         # Optional if you want to select a different preset
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
+  -e QUALITY=18 \  # Optional: Set custom transcoding quality-e PRESET=medium \  # Optional: Choose a different preset (default: medium)-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
   -e CHAT_ID=xxxxxxxx \                      # Optional (requires BOT_TOKEN)
   -e NOTIFICATIONS=all \                     # Optional if you want to receive all notifications
   macrimi/hwencoderx:latest
@@ -98,7 +108,7 @@ services:
       NOTIFICATIONS: "all"                       # Optional if you want to receive all notifications
 ```
 
-#### - NVIDIA
+#### NVIDIA Usage
 
 ##### docker run:
 ```bash
