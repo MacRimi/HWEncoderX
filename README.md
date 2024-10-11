@@ -239,7 +239,9 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 
 **Nota:** `/ruta/a/entrada` y `/ruta/a/salida` pueden ser la misma carpeta. Los archivos transcodificados se crearán con el sufijo `_HEVC`.
 
-## Instrucciones de Uso
+#
+
+### Instrucciones de Uso:
 
 #### - VAAPI
 
