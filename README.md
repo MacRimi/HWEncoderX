@@ -262,7 +262,7 @@ services:
       - /ruta/a/salida:/output
     environment:
       # Variables opcionales para las notificaciones
-      # Solo define estas variables si deseas recibir notificaciones
+      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
       CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
@@ -300,6 +300,7 @@ services:
       - /ruta/a/salida:/output
     environment:
       # Variables opcionales para las notificaciones
+      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
       CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
