@@ -315,8 +315,8 @@ services:
       - /ruta/a/entrada:/input
       - /ruta/a/salida:/output
     environment:
-     -e QUALITY=18 \                              # Opcional si quieres personalizar la calidad 
-     -e PRESET=medium \                           # Opcional si quieres selecioar otro preset
+     -e QUALITY=18 \                             # Opcional si quieres personalizar la calidad 
+     -e PRESET=medium \                          # Opcional si quieres selecioar otro preset
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
