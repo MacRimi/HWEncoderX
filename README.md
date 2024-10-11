@@ -64,17 +64,19 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 docker run -d --name hwencoderx --device=/dev/dri \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  # Optional (requires CHAT_ID)
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
-  # Optional (requires BOT_TOKEN)
   -e CHAT_ID=xxxxxxxx \
-  # Optional
   -e QUALITY=18 \
-  # Optional
   -e PRESET=medium \
-  # Optional
   -e NOTIFICATIONS=all \
   macrimi/hwencoderx:latest
+
+# Explanation of the parameters used:
+# - `-e QUALITY=18`: (Optional) Defines the custom quality level (recommended between 16 to 22) for transcoding.
+# - `-e PRESET=medium`: (Optional) Defines the custom preset for transcoding (optional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (Optional, replace with your TOKEN, requires CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: (Optional, replace with your CHAT_ID, requires BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: (Optional)
 ```
 
 #### `docker-compose.yml`
@@ -110,17 +112,19 @@ services:
 docker run -d --name hwencoderx --gpus all \ 
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  # Optional (requires CHAT_ID)
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
-  # Optional (requires BOT_TOKEN)
   -e CHAT_ID=xxxxxxxx \
-  # Optional
   -e QUALITY=18 \
-  # Optional
   -e PRESET=medium \
-  # Optional
   -e NOTIFICATIONS=all \
-  macrimi/hwencoderx:latest 
+  macrimi/hwencoderx:latest
+
+# Explanation of the parameters used:
+# - `-e QUALITY=18`: (Optional) Defines the custom quality level (recommended between 16 to 22) for transcoding.
+# - `-e PRESET=medium`: (Optional) Defines the custom preset for transcoding (optional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (Optional, replace with your TOKEN, requires CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: (Optional, replace with your CHAT_ID, requires BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: (Optional).
 ```
 
 #### `docker-compose.yml`
@@ -231,17 +235,19 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 docker run -d --name hwencoderx --device=/dev/dri \
   -v /path/to/input:/input \ 
   -v /path/to/output:/output \
-  # Opcional
   -e QUALITY=18 \
-  # Opcional
   -e PRESET=medium \
-  # Opcional (requiere CHAT_ID)
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
-  # Opcional (requiere BOT_TOKEN)
   -e CHAT_ID=xxxxxxxx \
-  # Opcional
   -e NOTIFICATIONS=all \
-  macrimi/hwencoderx:latest 
+  macrimi/hwencoderx:latest
+
+# Explicación de los parámetros usados:
+# - `-e QUALITY=18`: (Opcional) Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
+# - `-e PRESET=medium`: (Opcional) Define el preset personalizado de la transcodificación (opcional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (opcional, cambia por tu TOKEN, requiere CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: (opcional, cambia por tu CHAT_ID, requiere BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: (opcional).
 ```
 
 #### `docker-compose.yml`
@@ -277,17 +283,19 @@ services:
 docker run -d --name hwencoderx --gpus all \ 
   -v /path/to/input:/input \ 
   -v /path/to/output:/output \
-  # Opcional
   -e QUALITY=18 \
-  # Opcional
   -e PRESET=medium \
-  # Opcional (requiere CHAT_ID)
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \
-  # Opcional (requiere BOT_TOKEN)
   -e CHAT_ID=xxxxxxxx \
-  # Opcional
   -e NOTIFICATIONS=all \
   macrimi/hwencoderx:latest
+
+# Explicación de los parámetros usados:
+# - `-e QUALITY=18`: (Opcional) Define el nivel de calidad personalizado (recomendado de 16 a 22) para la transcodificación. 
+# - `-e PRESET=medium`: (Opcional) Define el preset personalizado de la transcodificación (opcional).
+# - `-e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx`: (opcional, cambia por tu TOKEN, requiere CHAT_ID).
+# - `-e CHAT_ID=xxxxxxxx`: (opcional, cambia por tu CHAT_ID, requiere BOT_TOKEN).
+# - `-e NOTIFICATIONS=all`: (opcional).
 ```
 
 #### `docker-compose.yml`
