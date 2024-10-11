@@ -308,10 +308,10 @@ Funciona en cualquier NAS con una GPU **Intel** o **NVIDIA** funcional.
 ### Modelos DVA
 En los NAS **DVA** de Synology que usan la **NVIDIA Runtime Library** para **Surveillance Station**, no es posible ejecutar este contenedor ya que no tienen NVIDIA Container Toolkit.
 
-## Licencia
+### Licencia
 Este proyecto está bajo la **Licencia MIT**. Puedes usar, modificar y distribuir el código siempre que se dé el crédito correspondiente. Consulta el archivo `LICENSE` para más detalles.
 
-## Software de Terceros
+### Software de Terceros
 Este contenedor usa **FFmpeg**, licenciado bajo **LGPL 2.1 o posterior**. Consulta la [documentación de FFmpeg](https://ffmpeg.org/legal.html) para más información.
 
 
