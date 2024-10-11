@@ -8,14 +8,9 @@
 
 # HWEncoderX: Video Transcoder with GPU Hardware Acceleration (VAAPI, NVENC, and QSV)
 
-HWEncoderX is a Docker container designed to simplify video transcoding to H.265 (HEVC), leveraging your GPU for efficient hardware acceleration using **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **Intel Quick Sync (QSV)**. This allows you to reduce video size without losing quality while preserving audio, subtitles, and chapters intact.
-
 HWEncoderX is a Docker container that allows you to automatically transcode videos to H.265 (HEVC) using your GPU with hardware acceleration, supporting **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), and **Intel Quick Sync (QSV)**. It keeps all audio, subtitles, and chapters intact while reducing the size of your videos without quality loss.
 
 ## Features
-
-- **Multi-GPU Support**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
-- **Multiple Input Format Support**: Compatible with `.mkv`, `.mp4`, `.avi`, `.mov`, and `.mpeg` files.
 
 - **Support for Multiple GPUs**: Compatible with **Intel Quick Sync (QSV)**, **NVIDIA NVENC**, and **VAAPI**. If no compatible GPU is detected, the container stops and sends an error notification.
 - **Support for Multiple Input Formats**: Compatible with `.mkv`, `.mp4`, `.avi`, `.mov`, and `.mpeg` files.
