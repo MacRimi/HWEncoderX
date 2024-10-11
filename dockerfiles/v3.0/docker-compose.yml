@@ -1,1 +1,22 @@
-
+version: '3.3'
+services:
+  hwencoderx:
+    image: macrimi/hwencoderx:latest
+    container_name: hwencoderx
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri  # Para VAAPI
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]  # Para NVIDIA NVENC
+    volumes:
+      - /path/to/input:/input 
+      - /path/to/output:/output 
+    environment:
+      QUALITY: "18" # Optional
+      PRESET: "medium" # Optional
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
+      CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
+      NOTIFICATIONS: "all" # Optional
