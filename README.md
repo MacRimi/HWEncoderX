@@ -322,6 +322,7 @@ services:
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
+#
 
 ### Notas adicionales:
 HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una GPU compatible **Intel**, **AMD**, o **NVIDIA**, el contenedor no funcionará. Los archivos originales no se borran después de la transcodificación.
