@@ -217,7 +217,7 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 
 Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener tu **BOT_TOKEN** y **CHAT_ID**. Sigue estos pasos:
 
-1. Crea un nuevo bot en Telegram hablando con el [BotFather](https://t.me/botfather) y sigue las instrucciones para obtener tu **BOT_TOKEN**.
+1. Crea un nuevo bot en Telegram con [BotFather](https://t.me/botfather) y sigue las instrucciones para obtener tu **BOT_TOKEN**.
 2. Obtén tu **CHAT_ID** enviando un mensaje a tu bot y utilizando una llamada a la API como:
    ```bash
    curl -s "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates" | jq
