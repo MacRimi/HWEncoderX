@@ -59,7 +59,7 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 
 ### Usage Instructions:
 
-#### - VAAPI
+#### - Intel Quick Sync (QSV), VAAPI
 
 ##### docker run:
 ```bash
@@ -215,7 +215,7 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 
 ### Instrucciones de Uso:
 
-#### - VAAPI
+#### - Intel Quick Sync (QSV), VAAPI
 
 ##### docker run:
 ```bash
