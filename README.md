@@ -223,10 +223,21 @@ Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener
 
 Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **Intel Quick Sync (QSV)**. Sin una GPU compatible, el contenedor **no funcionará**.
 
-## Instrucciones de Uso
+## Parámetros
 
-### - Opción Automática:
-El contenedor ajusta automáticamente la calidad de salida en función del bitrate del archivo de entrada.
+| Parámetros | Requisito | Función |
+| :----: | :----: | --- |
+| `--device /dev/dri` | Obligatorio si se usa QSV o VAAPI | Necesario para habilitar la aceleración por hardware mediante Intel Quick Sync (QSV) y VAAPI. |
+| `--gpus all` | Obligatorio si se usa NVENC | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
+| `-v /ruta/a/entrada:/input` | Obligatorio | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
+| `-v /ruta/a/salida:/output` | Obligatorio | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
+| `-e PRESET=fast` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
+| `-e QUALITY=17` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. Si no se define se ajustara la calidad automatíceme |
+| `-e BOT_TOKEN` | Opcional si se desean notificaciones | El token de tu bot de Telegram para enviar notificaciones. |
+| `-e CHAT_ID` | Opcional si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
+| `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. |
+
+## Instrucciones de Uso
 
 #### - VAAPI
 
@@ -235,8 +246,10 @@ El contenedor ajusta automáticamente la calidad de salida en función del bitra
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /ruta/a/entrada:/input \
   -v /ruta/a/salida:/output \
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Opcional si quieres recibir notificaciones 
-  -e CHAT_ID=xxxxxxxx \                      # Opcional si quieres recibir notificaciones
+  -e QUALITY=18 \                            # Opcional si quieres personalizar la calidad 
+  -e PRESET=medium \                         # Opcional si quieres selecioar otro preset
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Opcional, (requiere CHAT_ID)
+  -e CHAT_ID=xxxxxxxx \                      # Opcional (requiere BOT_TOKEN)
   -e NOTIFICATIONS=all \                     # Opcional si quieres recibir todas las notificaciones
   macrimi/hwencoderx:latest
 ```
@@ -376,7 +389,7 @@ services:
 | `-v /ruta/a/entrada:/input` | Obligatorio | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
 | `-v /ruta/a/salida:/output` | Obligatorio | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
 | `-e PRESET=fast` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
-| `-e QUALITY=17` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-e QUALITY=17` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. Si no se define se ajustara la calidad automatíceme |
 | `-e BOT_TOKEN` | Opcional si se desean notificaciones | El token de tu bot de Telegram para enviar notificaciones. |
 | `-e CHAT_ID` | Opcional si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
 | `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. |
