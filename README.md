@@ -248,7 +248,7 @@ services:
       - QUALITY=18 # Opcional
       - PRESET=medium # Opcional
       # Variables opcionales para las notificaciones
-	  # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
+      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (requiere CHAT_ID)
       CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
       NOTIFICATIONS: "all" # Opcional
@@ -292,7 +292,7 @@ services:
       - QUALITY=18 # Opcional
       - PRESET=medium # Opcional
       # Variables opcionales para las notificaciones
-	  # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
+      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (requiere CHAT_ID)
       CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
       NOTIFICATIONS: "all" # Opcional
