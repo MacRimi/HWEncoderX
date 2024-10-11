@@ -240,6 +240,9 @@ El contenedor ajusta automáticamente la calidad de salida en función del bitra
 docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
   -v /ruta/a/entrada:/input \
   -v /ruta/a/salida:/output \
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Opcional si quieres recibir notificaciones 
+  -e CHAT_ID=xxxxxxxx \                      # Opcional si quieres recibir notificaciones
+  -e NOTIFICATIONS=all \                     # Opcional si quieres recibir todas las notificaciones
   macrimi/hwencoderx:latest
 ```
 
