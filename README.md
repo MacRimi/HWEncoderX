@@ -224,12 +224,6 @@ Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener
    ```
    Reemplaza `<YOUR_BOT_TOKEN>` con el token de tu bot para encontrar tu **CHAT_ID** en la respuesta.
 
-### Variables de Entorno para las Notificaciones de Telegram
-
-- `BOT_TOKEN`: El token de tu bot de Telegram.
-- `CHAT_ID`: El ID del chat donde se enviarán las notificaciones.
-- `NOTIFICATIONS`: Configura `all` para recibir todas las notificaciones, o `errors` para recibir solo notificaciones de errores.
-
 ## Requisitos
 
 Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **Intel Quick Sync (QSV)**. Sin una GPU compatible, el contenedor **no funcionará**.
@@ -364,8 +358,11 @@ services:
 | :----: | --- |
 | `--device /dev/dri` | Necesario para habilitar la aceleración por hardware mediante VAAPI. |
 | `--gpus all` | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
-| `-e PRESET=medium` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
-| `-e QUALITY=18` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). |
+| `-e QUALITY=22` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-e BOT_TOKEN` | El token de tu bot de Telegram para enviar notificaciones. |
+| `-e CHAT_ID` | El ID del chat donde se enviarán las notificaciones de Telegram. |
+| `-e NOTIFICATIONS` | Configura `all` para recibir todas las notificaciones, si no esta definido solo se recibiran notificaciones de errores. |
 | `-v /ruta/a/entrada:/input` | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
 | `-v /ruta/a/salida:/output` | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
 
