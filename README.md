@@ -354,17 +354,17 @@ services:
 
 ## Parámetros
 
-| Parámetros | Función | Requisito |
-| :----: | --- | :----: |
-| `--device /dev/dri` | Necesario para habilitar la aceleración por hardware mediante VAAPI. | Obligatorio si se usa VAAPI |
-| `--gpus all` | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. | Obligatorio si se usa NVENC |
-| `-e PRESET=fast` | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. | Opcional |
-| `-e QUALITY=22` | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. | Opcional |
-| `-e BOT_TOKEN` | El token de tu bot de Telegram para enviar notificaciones. | Obligatorio si se desean notificaciones |
-| `-e CHAT_ID` | El ID del chat donde se enviarán las notificaciones de Telegram. | Obligatorio si se desean notificaciones |
-| `-e NOTIFICATIONS` | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. | Opcional |
-| `-v /ruta/a/entrada:/input` | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. | Obligatorio |
-| `-v /ruta/a/salida:/output` | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) | Obligatorio |
+| Parámetros | Requisito | Función |
+| :----: | :----: | --- |
+| `--device /dev/dri` | Obligatorio si se usa VAAPI | Necesario para habilitar la aceleración por hardware mediante VAAPI. |
+| `--gpus all` | Obligatorio si se usa NVENC | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
+| `-v /ruta/a/entrada:/input` | Obligatorio | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
+| `-v /ruta/a/salida:/output` | Obligatorio | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
+| `-e BOT_TOKEN` | Obligatorio si se desean notificaciones | El token de tu bot de Telegram para enviar notificaciones. |
+| `-e CHAT_ID` | Obligatorio si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
+| `-e PRESET=fast` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
+| `-e QUALITY=22` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. |
+| `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. |
 
 **Nota:** `/ruta/a/entrada` y `/ruta/a/salida` pueden ser la misma carpeta. Los archivos transcodificados se crearán con el sufijo `_HEVC`.
 
