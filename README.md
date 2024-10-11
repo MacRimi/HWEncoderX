@@ -197,17 +197,12 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 ## Características
 
 - **Soporte para Múltiples GPU**: Compatible con **Intel Quick Sync (QSV)**, **NVIDIA NVENC** y **VAAPI**. Si no se detecta una GPU compatible, el contenedor se detiene y envía una notificación de error.
-
+- **Soporte para Múltiples Formatos de Entrada**: Compatible con archivos `.mkv`, `.mp4`, `.avi`, `.mov`, y `.mpeg`.
 - **Notificaciones a Telegram**: Se envían notificaciones de bienvenida, detalles de transcodificación (tiempo, velocidad, calidad) y errores durante el proceso.
-
 - **Ajuste Automático de Calidad**: Ajuste optimizado para **priorizar la calidad** según el bitrate del video de entrada usando la variable global **QUALITY**.
-
 - **Docker Siempre Activo**: El contenedor permanece activo y monitorea constantemente el directorio de entrada para detectar nuevos archivos.
-
 - **Manejo de Errores y Verificación de Espacio**: Verifica el espacio en disco antes de la transcodificación y envía notificaciones si el espacio es insuficiente o si hay errores.
-
 - **Mejoras en la Transcodificación**: Se corrigió un error que impedía transcodificar archivos sin pistas de subtítulos definidas.
-
 - **Reducción de Tamaño**: Transcodificación a H.265 (HEVC) para reducir el tamaño del archivo hasta en un 70%.
 - **Ideal para Servidores Multimedia**: Compatible con **Plex**, **Jellyfin**, **Emby** y más.
 - **Sencillo**: Solo monta las carpetas de entrada y salida, y HWEncoderX hace todo el trabajo.
