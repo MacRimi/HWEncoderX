@@ -144,7 +144,7 @@ services:
       - /path/to/input:/input 
       - /path/to/output:/output 
     environment:
-   QUALITY: "18" # Optional
+      QUALITY: "18" # Optional
       PRESET: "medium" # Optional
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
       CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
