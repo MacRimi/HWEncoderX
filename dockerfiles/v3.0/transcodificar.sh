@@ -61,15 +61,15 @@ detect_hardware() {
 
   if nvidia-smi > /dev/null 2>&1; then
     USE_NVIDIA=true
-    echo ">> HWEncoderX 3.0 — NVIDIA NVENC - $(date '+%Y-%m-%d %H:%M:%S') <<" >> "$LOG_FILE"
+    echo ">> HWEncoderX 3.0 — NVIDIA NVENC - $(date '+%H:%M:%S %d-%m-%Y') <<" >> "$LOG_FILE"
     send_telegram_notification "HWEncoderX 3.0 — Tegnologia NVIDIA NVENC"
   elif echo "$hwaccels" | grep -q "qsv"; then
     USE_QSV=true
-    echo ">> HWEncoderX 3.0 — Intel QuickSync - $(date '+%Y-%m-%d %H:%M:%S') <<" >> "$LOG_FILE"
+    echo ">> HWEncoderX 3.0 — Intel QuickSync - $(date '+%H:%M:%S %d-%m-%Y') <<" >> "$LOG_FILE"
     send_telegram_notification "HWEncoderX 3.0 — Tegnologia Intel QuickSync"
   elif echo "$hwaccels" | grep -q "vaapi"; then
     USE_VAAPI=true
-    echo ">> HWEncoderX 3.0 — VAAPI - $(date '+%Y-%m-%d %H:%M:%S') <<" >> "$LOG_FILE"
+    echo ">> HWEncoderX 3.0 — VAAPI - $(date '+%H:%M:%S %d-%m-%Y') <<" >> "$LOG_FILE"
     send_telegram_notification "HWEncoderX 3.0 — Tegnologia VAAPI"
   else
     echo ">> HWEncoderX 3.0 — No se encontró hardware de aceleración. Deteniendo contenedor - $(date '+%Y-%m-%d %H:%M:%S') <<" >> "$LOG_FILE"
@@ -311,7 +311,7 @@ process_directory() {
 
           # Comprobar si hay suficiente espacio antes de procesar el archivo
           if ! check_available_space "$input_size"; then
-            echo "Error: No hay suficiente espacio disponible en el directorio de salida $OUTPUT_DIR para segir transcodificando los archivos pendientes. Deteniendo el procesamiento temporalmente. $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+            echo "Error: No hay suficiente espacio disponible en el directorio de salida $OUTPUT_DIR para segir transcodificando los archivos pendientes. Deteniendo el procesamiento temporalmente. $(date '+%H:%M:%S %d-%m-%Y')" >> "$LOG_FILE"
             echo "-------------------------------" >> "$LOG_FILE"
             send_telegram_notification "Error: No hay suficiente espacio disponible en el directorio de salida: $OUTPUT_DIR para segir transcodificando los archivos pendientes. El proceso se detendrá hasta que haya espacio disponible. $(date '+%Y-%m-%d %H:%M:%S')"
 
@@ -345,7 +345,7 @@ process_directory() {
 # -----------------------------------------------------------------
 
 # Inicio
-echo "Buscando archivos... - $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+echo "Buscando archivos... - $(date '+%H:%M:%S %d-%m-%Y')" >> "$LOG_FILE"
 echo " " >> "$LOG_FILE"
 
 while true; do
