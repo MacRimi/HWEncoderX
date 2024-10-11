@@ -213,6 +213,23 @@ HWEncoderX es un contenedor Docker que te permite transcodificar videos a H.265 
 - **Sencillo**: Solo monta las carpetas de entrada y salida, y HWEncoderX hace todo el trabajo.
 - **Opciones Personalizables**: Define manualmente la calidad con la variable **QUALITY** y selecciona el **preset** para ajustar la velocidad y calidad según tus necesidades.
 
+## Configuración de Notificaciones de Telegram
+
+Para recibir notificaciones vía Telegram, necesitas configurar un bot y obtener tu **BOT_TOKEN** y **CHAT_ID**. Sigue estos pasos:
+
+1. Crea un nuevo bot en Telegram hablando con el [BotFather](https://t.me/botfather) y sigue las instrucciones para obtener tu **BOT_TOKEN**.
+2. Obtén tu **CHAT_ID** enviando un mensaje a tu bot y utilizando una llamada a la API como:
+   ```bash
+   curl -s "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates" | jq
+   ```
+   Reemplaza `<YOUR_BOT_TOKEN>` con el token de tu bot para encontrar tu **CHAT_ID** en la respuesta.
+
+### Variables de Entorno para las Notificaciones de Telegram
+
+- `BOT_TOKEN`: El token de tu bot de Telegram.
+- `CHAT_ID`: El ID del chat donde se enviarán las notificaciones.
+- `NOTIFICATIONS`: Configura `all` para recibir todas las notificaciones, o `errors` para recibir solo notificaciones de errores.
+
 ## Requisitos
 
 Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **Intel Quick Sync (QSV)**. Sin una GPU compatible, el contenedor **no funcionará**.
