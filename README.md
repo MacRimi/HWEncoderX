@@ -237,6 +237,8 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 | `-e CHAT_ID` | Opcional si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
 | `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. |
 
+**Nota:** `/ruta/a/entrada` y `/ruta/a/salida` pueden ser la misma carpeta. Los archivos transcodificados se crearán con el sufijo `_HEVC`.
+
 ## Instrucciones de Uso
 
 #### - VAAPI
@@ -269,6 +271,8 @@ services:
       - /ruta/a/entrada:/input
       - /ruta/a/salida:/output
     environment:
+      - QUALITY=18                               # Opcional si quieres personalizar la calidad   
+      - PRESET=medium                            # Opcional si quieres selecioar otro preset
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
@@ -283,6 +287,8 @@ services:
 docker run -d --name hwencoderx --gpus all \
   -v /ruta/a/entrada:/input \
   -v /ruta/a/salida:/output \
+  -e QUALITY=18 \                              # Opcional si quieres personalizar la calidad 
+  -e PRESET=medium \                           # Opcional si quieres selecioar otro preset
   -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Opcional si quieres recibir notificaciones
   -e CHAT_ID=xxxxxxxx \                        # Opcional si quieres recibir notificaciones
   -e NOTIFICATIONS=all \                       # Opcional si quieres recibir todas las notificaciones
@@ -307,6 +313,8 @@ services:
       - /ruta/a/entrada:/input
       - /ruta/a/salida:/output
     environment:
+     -e QUALITY=18 \                              # Opcional si quieres personalizar la calidad 
+     -e PRESET=medium \                           # Opcional si quieres selecioar otro preset
       # Variables opcionales para las notificaciones
       # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
       BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
@@ -314,87 +322,6 @@ services:
       NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
-### - Opción Manual:
-Esta opción te permite ajustar manualmente la calidad de transcodificación utilizando la variable global **QUALITY**, que se aplica a NVENC, VAAPI y QSV.
-
-#### - VAAPI
-
-##### docker run:
-```bash
-docker run -d --name hwencoderx --device /dev/dri:/dev/dri \
-  -v /ruta/a/entrada:/input \
-  -v /ruta/a/salida:/output \
-  -e QUALITY=18 \
-  -e PRESET=fast \
-  macrimi/hwencoderx:latest
-```
-
-##### `docker-compose.yml`:
-```yaml
-version: '3.3'
-services:
-  hwencoderx:
-    image: macrimi/hwencoderx:latest
-    container_name: hwencoderx
-    restart: unless-stopped
-    devices:
-      - /dev/dri:/dev/dri
-    environment:
-      - QUALITY=18
-      - PRESET=fast
-    volumes:
-      - /ruta/a/entrada:/input
-      - /ruta/a/salida:/output
-```
-
-#### - NVIDIA
-
-##### docker run:
-```bash
-docker run -d --name hwencoderx --gpus all \
-  -v /ruta/a/entrada:/input \
-  -v /ruta/a/salida:/output \
-  -e QUALITY=18 \
-  -e PRESET=medium \
-  macrimi/hwencoderx:latest
-```
-
-##### `docker-compose.yml`:
-```yaml
-version: '3.3'
-services:
-  hwencoderx:
-    image: macrimi/hwencoderx:latest
-    container_name: hwencoderx
-    restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu] 
-    environment:
-      - QUALITY=18
-      - PRESET=medium
-    volumes:
-      - /ruta/a/entrada:/input
-      - /ruta/a/salida:/output
-```
-
-## Parámetros
-
-| Parámetros | Requisito | Función |
-| :----: | :----: | --- |
-| `--device /dev/dri` | Obligatorio si se usa QSV o VAAPI | Necesario para habilitar la aceleración por hardware mediante Intel Quick Sync (QSV) y VAAPI. |
-| `--gpus all` | Obligatorio si se usa NVENC | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
-| `-v /ruta/a/entrada:/input` | Obligatorio | Reemplaza `/ruta/a/entrada` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
-| `-v /ruta/a/salida:/output` | Obligatorio | Reemplaza `/ruta/a/salida` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
-| `-e PRESET=fast` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
-| `-e QUALITY=17` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. Si no se define se ajustara la calidad automatíceme |
-| `-e BOT_TOKEN` | Opcional si se desean notificaciones | El token de tu bot de Telegram para enviar notificaciones. |
-| `-e CHAT_ID` | Opcional si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
-| `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones, si no está definido solo se recibirán notificaciones de errores. |
-
-**Nota:** `/ruta/a/entrada` y `/ruta/a/salida` pueden ser la misma carpeta. Los archivos transcodificados se crearán con el sufijo `_HEVC`.
 
 ### Notas adicionales:
 HWEncoderX funciona con aceleración por hardware **VAAPI** y **NVENC**. Sin una GPU compatible **Intel**, **AMD**, o **NVIDIA**, el contenedor no funcionará. Los archivos originales no se borran después de la transcodificación.
