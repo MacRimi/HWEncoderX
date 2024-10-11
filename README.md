@@ -106,11 +106,11 @@ services:
 docker run -d --name hwencoderx --gpus all \
   -v /path/to/input:/input \
   -v /path/to/output:/output \
-  -e QUALITY=18 \                              # Optional if you want to customize the quality 
-  -e PRESET=medium \                           # Optional if you want to select a different preset
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Optional (requires CHAT_ID)
-  -e CHAT_ID=xxxxxxxx \                        # Optional (requires BOT_TOKEN)
-  -e NOTIFICATIONS=all \                       # Optional if you want to receive all notifications
+  -e QUALITY=18 \  # Optional: Customize the transcoding quality
+  -e PRESET=medium \  # Optional: Select a different preset (default: medium)
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \  # Optional (requires CHAT_ID)
+  -e CHAT_ID=xxxxxxxx \  # Optional (requires BOT_TOKEN)
+  -e NOTIFICATIONS=all \  # Optional: Receive all notifications
   macrimi/hwencoderx:latest
 ```
 
