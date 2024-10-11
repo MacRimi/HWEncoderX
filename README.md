@@ -50,8 +50,8 @@ You need a GPU compatible with **VAAPI** (Intel/AMD), **NVENC** (NVIDIA), or **I
 | `--gpus all` | Required if using NVENC | Needed to enable hardware acceleration through NVENC on NVIDIA GPUs. |
 | `-v /path/to/input:/input` | Required | Replace `/path/to/input` with the path to your input folder where the videos to be transcoded are located. |
 | `-v /path/to/output:/output` | Required | Replace `/path/to/output` with the path where the transcoded files will be saved. (This can be the same as the input folder) |
-| `-e PRESET=fast` | Optional | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). `medium` is the default value. |
-| `-e QUALITY=17` | Optional | Manually define the quality level for transcoding, used in NVENC, VAAPI, and QSV. If not defined, the quality will be automatically adjusted based on the input bitrate to maintain an optimal balance between quality and file size. |
+| `-e PRESET` | Optional | Specifies the preset value (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower`, and `veryslow`). `medium` is the default value. |
+| `-e QUALITY` | Optional | Manually define the quality level for transcoding, used in NVENC, VAAPI, and QSV. If not defined, the quality will be automatically adjusted based on the input bitrate to maintain an optimal balance between quality and file size. |
 | `-e BOT_TOKEN` | Optional if notifications are desired | The token of your Telegram bot for sending notifications. |
 | `-e CHAT_ID` | Optional if notifications are desired | The chat ID where Telegram notifications will be sent. |
 | `-e NOTIFICATIONS` | Optional | Set to `all` to receive all notifications; if not defined, only error notifications will be sent. |
@@ -208,8 +208,8 @@ Necesitas una GPU compatible con **VAAPI** (Intel/AMD), **NVENC** (NVIDIA) o **I
 | `--gpus all` | Obligatorio si se usa NVENC | Necesario para habilitar la aceleración por hardware mediante NVENC en GPUs NVIDIA. |
 | `-v /path/to/input:/input` | Obligatorio | Reemplaza `/path/to/input` con la ruta a tu carpeta de entrada, donde se encuentran los videos a transcodificar. |
 | `-v /path/to/output:/output` | Obligatorio | Reemplaza `/path/to/output` con la ruta donde se guardarán los archivos transcodificados. (Esto puede ser la misma carpeta de entrada) |
-| `-e PRESET=fast` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
-| `-e QUALITY=17` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. Si no se define, la calidad se ajustará automáticamente según el bitrate de entrada para mantener un equilibrio óptimo entre calidad y tamaño de archivo. |
+| `-e PRESET` | Opcional | Especifica el valor del preset (`ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium`, `slow`, `slower` y `veryslow`). `medium` es el valor por defecto. |
+| `-e QUALITY` | Opcional | Define manualmente el nivel de calidad para la transcodificación, usado en NVENC, VAAPI y QSV. Si no se define, la calidad se ajustará automáticamente según el bitrate de entrada para mantener un equilibrio óptimo entre calidad y tamaño de archivo. |
 | `-e BOT_TOKEN` | Opcional si se desean notificaciones | El token de tu bot de Telegram para enviar notificaciones. |
 | `-e CHAT_ID` | Opcional si se desean notificaciones | El ID del chat donde se enviarán las notificaciones de Telegram. |
 | `-e NOTIFICATIONS` | Opcional | Configura `all` para recibir todas las notificaciones; si no está definido, solo se recibirán notificaciones de errores. |
