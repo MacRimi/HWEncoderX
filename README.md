@@ -263,9 +263,9 @@ services:
     environment:
       # Variables opcionales para las notificaciones
       # Solo define estas variables si deseas recibir notificaciones
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"   # Token del bot de Telegram
-      CHAT_ID: "xxxxxxxx"                      # ID del chat de Telegram
-      NOTIFICATIONS: "all"                     # Configuración de notificaciones
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
+      CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
+      NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
 #### - NVIDIA
@@ -275,9 +275,9 @@ services:
 docker run -d --name hwencoderx --gpus all \
   -v /ruta/a/entrada:/input \
   -v /ruta/a/salida:/output \
-  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \   # Token del bot de Telegram
-  -e CHAT_ID=xxxxxxxx \                       # ID del chat de Telegram
-  -e NOTIFICATIONS=all \                      # Configuración de notificaciones
+  -e BOT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxx \    # Opcional si quieres recibir notificaciones
+  -e CHAT_ID=xxxxxxxx \                        # Opcional si quieres recibir notificaciones
+  -e NOTIFICATIONS=all \                       # Opcional si quieres recibir todas las notificaciones
   macrimi/hwencoderx:latest
 ```
 
@@ -294,15 +294,15 @@ services:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]  # Asegura el uso de GPUs para el contenedor
+            - capabilities: [gpu] 
     volumes:
       - /ruta/a/entrada:/input
       - /ruta/a/salida:/output
     environment:
       # Variables opcionales para las notificaciones
-      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"   # Token del bot de Telegram
-      CHAT_ID: "xxxxxxxx"                      # ID del chat de Telegram
-      NOTIFICATIONS: "all"                     # Configuración de notificaciones
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx"    # Opcional si quieres recibir notificaciones
+      CHAT_ID: "xxxxxxxx"                        # Opcional si quieres recibir notificaciones
+      NOTIFICATIONS: "all"                       # Opcional si quieres recibir todas las notificaciones
 ```
 
 ### - Opción Manual:
