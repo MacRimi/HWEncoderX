@@ -95,13 +95,11 @@ services:
       - /path/to/input:/input 
       - /path/to/output:/output 
     environment:
-      - QUALITY=18 # Optional
-      - PRESET=medium # Optional
-      # Optional variables for notifications
-      # Define these variables only if you want to receive notifications (values should be quoted)
-      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
-      - CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
-      - NOTIFICATIONS: "all" # Optional
+      QUALITY: "18" # Optional
+      PRESET: "medium" # Optional
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
+      CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
+      NOTIFICATIONS: "all" # Optional
 ```
 
 ### NVIDIA Usage
@@ -146,13 +144,11 @@ services:
       - /path/to/input:/input 
       - /path/to/output:/output 
     environment:
-      - QUALITY=18 # Optional
-      - PRESET=medium # Optional
-      # Optional variables for notifications
-      # Define these variables only if you want to receive notifications (values should be quoted)
-      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
-      - CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
-      - NOTIFICATIONS: "all" # Optional
+   QUALITY: "18" # Optional
+      PRESET: "medium" # Optional
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Optional (replace with your TOKEN, requires CHAT_ID)
+      CHAT_ID: "xxxxxxxx" # Optional (replace with your CHAT_ID, requires BOT_TOKEN)
+      NOTIFICATIONS: "all" # Optional
 ```
 
 ## Additional Notes
@@ -266,13 +262,11 @@ services:
       - /path/to/input:/input
       - /path/to/output:/output 
     environment:
-      - QUALITY=18 # Opcional
-      - PRESET=medium # Opcional
-      # Variables opcionales para las notificaciones
-      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
-      - CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
-      - NOTIFICATIONS: "all" # Opcional
+      QUALITY: "18" # Opcional
+      PRESET: "medium" # Opcional
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
+      CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
+      NOTIFICATIONS: "all" # Opcional
 ```
 
 ### Uso de NVIDIA
@@ -317,13 +311,11 @@ services:
       - /path/to/input:/input
       - /path/to/output:/output
     environment:
-      - QUALITY=18 # Opcional
-      - PRESET=medium # Opcional
-      # Variables opcionales para las notificaciones
-      # Define estas variables solo si deseas recibir notificaciones (los valores deben ir entre comillas)
-      - BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
-      - CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
-      - NOTIFICATIONS: "all" # Opcional
+      QUALITY: "18" # Opcional
+      PRESET: "medium" # Opcional
+      BOT_TOKEN: "xxxxxxxxxxxxxxxxxxxxxxxxxx" # Opcional (cambia por tu TOKEN, requiere CHAT_ID)
+      CHAT_ID: "xxxxxxxx" # Opcional (requiere BOT_TOKEN)
+      NOTIFICATIONS: "all" # Opcional
 ```
 
 ## Notas Adicionales
