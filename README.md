@@ -179,10 +179,10 @@ It works on any NAS with a functional **Intel** or **NVIDIA** GPU.
 ### DVA Models
 On **DVA** Synology NAS that use the **NVIDIA Runtime Library** for **Surveillance Station**, this container cannot be run as it lacks NVIDIA Container Toolkit support.
 
-## License
+### License
 This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
 
-## Third-party Software
+### Third-party Software
 This container uses **FFmpeg**, licensed under **LGPL 2.1 or later**. See the [FFmpeg documentation](https://ffmpeg.org/legal.html) for more information.
 
 
